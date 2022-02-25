@@ -167,6 +167,56 @@ public class App
 
     }
 
+
+   //All the countries in a continent organised by largest population to smallest
+
+    private void report3(String reg) {
+
+        System.out.println("All the countries in a Region organised by largest population to smallest");
+        StringBuilder sb  = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql3 = "select * " +
+                    "from country " +
+                    "where Region = " + reg +
+                    "Order By Population desc;";
+            // Execute SQL statement
+            ResultSet rset3 = stmt.executeQuery(sql3);
+            // Return new country if valid.
+            // Check one is returned
+            while (rset3.next()) {
+                String code = rset3.getString("code");
+                String name = rset3.getString("name");
+                String continent = rset3.getString("continent");
+                String region = rset3.getString("region");
+                Integer surfaceArea = rset3.getInt("surfaceArea");
+                Integer indepYear = rset3.getInt("indepYear");
+                Integer population = rset3.getInt("population");
+                Integer lifeExpectancy = rset3.getInt("lifeExpectancy");
+                Integer gnp = rset3.getInt("gnp");
+                Integer gnpOld = rset3.getInt("gnpOld");
+                String localName = rset3.getString("localName");
+                String governmentForm = rset3.getString("governmentForm");
+                String headOfState = rset3.getString("headOfState");
+                Integer capital = rset3.getInt("capital");
+                String code2 = rset3.getString("code2");
+                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                sb.append(country.toString() + "\r\n");
+            }
+            // Displays the records
+            System.out.println(sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return;
+        }
+
+    }
+
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -178,6 +228,7 @@ public class App
         // Display the Records
        // a.report1();
         a.report2("'Asia'");
+        a.report3("'Caribbean'");
 
         // Disconnect from database
         a.disconnect();
