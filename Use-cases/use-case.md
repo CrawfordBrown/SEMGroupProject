@@ -16,7 +16,7 @@ Primary Task
 
 ### Preconditions
 
-We know the population. Database contains the population of all the regions, continents and the world
+Database contains the population of all the regions, continents and the world
 
 ### Success End Condition
 
@@ -42,7 +42,7 @@ A request for population Ranking is sent to organisation
 
 ## EXTENSIONS
 
-None
+Top n populations shown
 
 ## SUB-VARIATIONS
 
