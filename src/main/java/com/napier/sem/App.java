@@ -135,11 +135,51 @@ public class App
             // Return new country if valid.
             // Check one is returned
             while (rset5.next()) {
+
                 Integer id = rset5.getInt("id");
                 String name = rset5.getString("name");
                 String countryCode = rset5.getString("countryCode");
                 String district = rset5.getString("district");
                 Integer population = rset5.getInt("population");
+                City city = new City(id, name, countryCode, district, population);
+                sb.append(city.toString() + "\r\n");
+            }
+            // Displays the records
+            System.out.println(sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return;
+        }
+
+    }
+    /*
+    All the cities in a continent organised by largest population to smallest.
+     */
+
+    private void report6(String cont) {
+
+        System.out.println("All the cities in a continent organised by largest population to smallest.\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql6 = "SELECT * \n" +
+                    "FROM city\n" +
+                    "JOIN country ON city.CountryCode=country.Code\n" +
+                    "WHERE country.Continent = " + cont +
+                    "ORDER BY city.Population DESC;";
+            // Execute SQL statement
+            ResultSet rset6 = stmt.executeQuery(sql6);
+            // Return new country if valid.
+            // Check one is returned
+            while (rset6.next()) {
+                Integer id = rset6.getInt("id");
+                String name = rset6.getString("name");
+                String countryCode = rset6.getString("countryCode");
+                String district = rset6.getString("district");
+                Integer population = rset6.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
                 sb.append(city.toString() + "\r\n");
             }
@@ -161,10 +201,14 @@ public class App
         a.connect();
 
         // Display the Records
-        a.report1();
+        //a.report1();
+
 
         // Display all the cities in the world organised by largest population to smallest.
-        a.report5();
+        //a.report5();
+
+        // Display All the cities in a continent organised by largest population to smallest.
+        a.report6("'Europe'");
 
         // Disconnect from database
         a.disconnect();
