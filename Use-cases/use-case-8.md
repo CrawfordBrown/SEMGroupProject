@@ -1,4 +1,4 @@
-# USE CASE: Produce a report with populations of regions, continents, and the world
+# USE CASE: Produce a report with number of people who speak different languages from greatest to largest
 
 ## CHARACTERISTIC INFORMATION
 
@@ -17,11 +17,12 @@ Primary Task
 
 ### Preconditions
 
-Database contains the population of all the regions, continents and the world
+Database contains the different languages for different countries
 
 ### Success End Condition
 
-A report is available for organisation to check all the populations
+A report is available for organisation with the number of people who speak different languages from greatest to largest,
+including percentage of the world population
 
 ### Failed End Condition
 
@@ -33,17 +34,17 @@ Organisation
 
 ### Trigger
 
-A request for population Ranking is sent to organisation
+A request for the number of people who speak different languages from greatest to largest, is sent to organisation
 
 ## MAIN SUCCESS SCENARIO
 
-1. Get populations of regions, continents and world
-2. Organising the populations of regions, continents and world from largest to smallest
+1. Get different languages from countryLanguage table
+2. Organising the different languages from greatest to largest
 3. Provide report to organisation
 
 ## EXTENSIONS
 
-Top n populations shown
+Percentage of the world population
 
 ## SUB-VARIATIONS
 
