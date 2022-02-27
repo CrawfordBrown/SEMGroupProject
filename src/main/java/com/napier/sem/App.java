@@ -199,7 +199,7 @@ public class App
 
     private void report7(String reg) {
 
-        System.out.println("All the cities in a continent organised by largest population to smallest.\n");
+        System.out.println("All the cities in a region organised by largest population to smallest.");
         StringBuilder sb = new StringBuilder();
         try {
             // Create an SQL statement
@@ -209,6 +209,46 @@ public class App
                     "FROM city\n" +
                     "JOIN country ON city.CountryCode=country.Code\n" +
                     "WHERE country.Region = " + reg +
+                    "ORDER BY city.Population DESC;";
+            // Execute SQL statement
+            ResultSet rset6 = stmt.executeQuery(sql6);
+            // Return new country if valid.
+            // Check one is returned
+            while (rset6.next()) {
+                Integer id = rset6.getInt("id");
+                String name = rset6.getString("name");
+                String countryCode = rset6.getString("countryCode");
+                String district = rset6.getString("district");
+                Integer population = rset6.getInt("population");
+                City city = new City(id, name, countryCode, district, population);
+                sb.append(city.toString() + "\r\n");
+            }
+            // Displays the records
+            System.out.println(sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return;
+        }
+
+    }
+
+    /*
+    All the cities in a country organised by largest population to smallest.
+     */
+
+    private void report8(String coutry) {
+
+        System.out.println("All the cities in a country organised by largest population to smallest.\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql6 = "SELECT * \n" +
+                    "FROM city\n" +
+                    "JOIN country ON city.CountryCode=country.Code\n" +
+                    "WHERE country.Name = " + coutry +
                     "ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset6 = stmt.executeQuery(sql6);
@@ -250,7 +290,10 @@ public class App
         //a.report6("'Europe'");
 
         // Display all the cities in a region organised by largest population to smallest.
-        a.report7("'Middle East'");
+        //a.report7("'Middle East'");
+
+        // Display All the cities in a country organised by largest population to smallest.
+        a.report8("'Netherlands'");
 
         // Disconnect from database
         a.disconnect();
