@@ -1,4 +1,4 @@
-# USE CASE: Produce a report with populations of regions, continents, and the world
+# USE CASE: Produce a front-end implementation so that more user-friendly interface
 
 ## CHARACTERISTIC INFORMATION
 
@@ -17,11 +17,11 @@ Primary Task
 
 ### Preconditions
 
-Database contains the population of all the regions, continents and the world
+Database has all the information
 
 ### Success End Condition
 
-A report is available for organisation to check all the populations
+A plan is available with a front-end implementation for the organisation
 
 ### Failed End Condition
 
@@ -33,17 +33,16 @@ Organisation
 
 ### Trigger
 
-A request for population Ranking is sent to organisation
+A request for plan with a front-end implementation is sent to organisation
 
 ## MAIN SUCCESS SCENARIO
 
-1. Get populations of regions, continents and world
-2. Organising the populations of regions, continents and world from largest to smallest
-3. Provide report to organisation
+1. Plan a front-end implementation which is user-friendly
+2. Provide the plan to organisation
 
 ## EXTENSIONS
 
-Top n populations shown
+None
 
 ## SUB-VARIATIONS
 
