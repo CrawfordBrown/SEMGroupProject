@@ -1,4 +1,4 @@
-# USE CASE: Produce a report with populations of regions, continents, and the world
+# USE CASE: Produce a report with populations for given continent/region/country
 
 ## CHARACTERISTIC INFORMATION
 
@@ -17,11 +17,11 @@ Primary Task
 
 ### Preconditions
 
-Database contains the population of all the regions, continents and the world
+Database contains the population of all the regions, continents and the country
 
 ### Success End Condition
 
-A report is available for organisation to check all the populations
+A report is available for organisation with the population for given continent/region/country
 
 ### Failed End Condition
 
@@ -33,17 +33,16 @@ Organisation
 
 ### Trigger
 
-A request for population Ranking is sent to organisation
+A request for report Population is sent to organisation
 
 ## MAIN SUCCESS SCENARIO
 
-1. Get populations of regions, continents and world
-2. Organising the populations of regions, continents and world from largest to smallest
-3. Provide report to organisation
+1. Get populations of given regions, continents and country
+2. Provide report to organisation
 
 ## EXTENSIONS
 
-Top n populations shown
+None
 
 ## SUB-VARIATIONS
 
