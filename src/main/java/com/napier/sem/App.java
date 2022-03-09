@@ -145,6 +145,7 @@ public class App
                 sb.append(city.toString() + "\r\n");
             }
             // Displays the records
+
             System.out.println(sb.toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -320,22 +321,22 @@ public class App
         a.connect();
 
         // Display the Records
-        a.report1();
+        //a.report1();
 
         // Display all the cities in the world organised by largest population to smallest.
         a.report5();
 
         // Display all the cities in a continent organised by largest population to smallest.
-        a.report6("'Europe'");
+        //a.report6("'Europe'");
 
         // Display all the cities in a region organised by largest population to smallest.
-        a.report7("'Middle East'");
+        //a.report7("'Middle East'");
 
         // Display All the cities in a country organised by largest population to smallest.
-        a.report8("'Netherlands'");
+        //a.report8("'Netherlands'");
 
         // Display All the cities in a district organised by largest population to smallest.
-        a.report9("'Buenos Aires'");
+        //a.report9("'Buenos Aires'");
 
         // Disconnect from database
         a.disconnect();
