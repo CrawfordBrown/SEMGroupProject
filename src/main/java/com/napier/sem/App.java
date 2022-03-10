@@ -132,7 +132,7 @@ public class App
             String sql5 = "select * from city order by Population desc;";
             // Execute SQL statement
             ResultSet rset5 = stmt.executeQuery(sql5);
-            // Return new country if valid.
+            // Return new cities if valid.
             // Check one is returned
             while (rset5.next()) {
 
@@ -173,7 +173,7 @@ public class App
                     "ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset6 = stmt.executeQuery(sql6);
-            // Return new country if valid.
+            // Return new cities if valid.
             // Check one is returned
             while (rset6.next()) {
                 Integer id = rset6.getInt("id");
@@ -213,7 +213,7 @@ public class App
                     "ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset7 = stmt.executeQuery(sql7);
-            // Return new country if valid.
+            // Return new cities if valid.
             // Check one is returned
             while (rset7.next()) {
                 Integer id = rset7.getInt("id");
@@ -253,7 +253,7 @@ public class App
                     "ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset8 = stmt.executeQuery(sql8);
-            // Return new country if valid.
+            // Return new cities if valid.
             // Check one is returned
             while (rset8.next()) {
                 Integer id = rset8.getInt("id");
@@ -292,7 +292,7 @@ public class App
                     "ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset9 = stmt.executeQuery(sql9);
-            // Return new country if valid.
+            // Return new cities if valid.
             // Check one is returned
             while (rset9.next()) {
                 Integer id = rset9.getInt("id");
