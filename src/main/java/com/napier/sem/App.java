@@ -325,32 +325,21 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String sql10 = "SELECT * \n" +
-                    "FROM country\n" +
-                    "ORDER BY country.population DESC\n" +
+                    "FROM city\n" +
+                    "ORDER BY city.population DESC\n" +
                     "LIMIT "+ num + ";";
             // Execute SQL statement
             ResultSet rset10 = stmt.executeQuery(sql10);
             // Return new cities if valid.
             // Check one is returned
             while (rset10.next()) {
-                String code = rset10.getString("code");
+                Integer id = rset10.getInt("id");
                 String name = rset10.getString("name");
-                String continent = rset10.getString("continent");
-                String region = rset10.getString("region");
-                Integer surfaceArea = rset10.getInt("surfaceArea");
-                Integer indepYear = rset10.getInt("indepYear");
+                String countryCode = rset10.getString("countryCode");
+                String district = rset10.getString("district");
                 Integer population = rset10.getInt("population");
-                Integer lifeExpectancy = rset10.getInt("lifeExpectancy");
-                Integer gnp = rset10.getInt("gnp");
-                Integer gnpOld = rset10.getInt("gnpOld");
-                String localName = rset10.getString("localName");
-                String governmentForm = rset10.getString("governmentForm");
-                String headOfState = rset10.getString("headOfState");
-                Integer capital = rset10.getInt("capital");
-                String code2 = rset10.getString("code2");
-                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
-                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                sb.append(country.toString() + "\r\n");
+                City city = new City(id, name, countryCode, district, population);
+                sb.append(city.toString() + "\r\n");
             }
             // Displays the records
             System.out.println(sb.toString());
