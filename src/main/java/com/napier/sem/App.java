@@ -313,6 +313,55 @@ public class App
 
     }
 
+    /*
+        The top N populated cities in the world where N is provided by the user.
+     */
+    private void report10(int num) {
+
+        System.out.println("The top N populated cities in the world where N is provided by the user.\n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql10 = "SELECT * \n" +
+                    "FROM country\n" +
+                    "ORDER BY country.population DESC\n" +
+                    "LIMIT "+ num + ";";
+            // Execute SQL statement
+            ResultSet rset10 = stmt.executeQuery(sql10);
+            // Return new cities if valid.
+            // Check one is returned
+            while (rset10.next()) {
+                String code = rset10.getString("code");
+                String name = rset10.getString("name");
+                String continent = rset10.getString("continent");
+                String region = rset10.getString("region");
+                Integer surfaceArea = rset10.getInt("surfaceArea");
+                Integer indepYear = rset10.getInt("indepYear");
+                Integer population = rset10.getInt("population");
+                Integer lifeExpectancy = rset10.getInt("lifeExpectancy");
+                Integer gnp = rset10.getInt("gnp");
+                Integer gnpOld = rset10.getInt("gnpOld");
+                String localName = rset10.getString("localName");
+                String governmentForm = rset10.getString("governmentForm");
+                String headOfState = rset10.getString("headOfState");
+                Integer capital = rset10.getInt("capital");
+                String code2 = rset10.getString("code2");
+                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                sb.append(country.toString() + "\r\n");
+            }
+            // Displays the records
+            System.out.println(sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get world details");
+            return;
+        }
+
+    }
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -321,22 +370,25 @@ public class App
         a.connect();
 
         // Display the Records
-        a.report1();
+        //a.report1();
 
         // Display all the cities in the world organised by largest population to smallest.
-        a.report5();
+        //a.report5();
 
         // Display all the cities in a continent organised by largest population to smallest.
-        a.report6("'Europe'");
+        //a.report6("'Europe'");
 
         // Display all the cities in a region organised by largest population to smallest.
-        a.report7("'Middle East'");
+        //a.report7("'Middle East'");
 
         // Display All the cities in a country organised by largest population to smallest.
-        a.report8("'Netherlands'");
+        //a.report8("'Netherlands'");
 
         // Display All the cities in a district organised by largest population to smallest.
-        a.report9("'Buenos Aires'");
+        //a.report9("'Buenos Aires'");
+
+        // Display top N populated cities in the world where N is provided by the user.
+        a.report10(4);
 
         // Disconnect from database
         a.disconnect();
