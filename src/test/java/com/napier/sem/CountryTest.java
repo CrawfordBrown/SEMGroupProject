@@ -56,4 +56,16 @@ public class CountryTest {
        myCountry.setContinent("Asia");
        assertEquals("Asia", myCountry.getContinent());
     }
+
+    @Test
+    void canGetCountryRegion() {
+        assertEquals("Western Europe", myCountry.getRegion()
+);
+    }
+
+    @Test
+    void canSetCountryRegion() {
+       myCountry.setRegion("South East Asia");
+       assertEquals("South East Asia", myCountry.getRegion());
+    }
 }
