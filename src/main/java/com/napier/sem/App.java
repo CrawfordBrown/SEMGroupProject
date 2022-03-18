@@ -261,7 +261,9 @@ public class App
             return;
         }
 
-    }//Top n populated countries in continent
+    }
+
+    //Top n populated countries in continent
 
     private void TopPopulatedCountriesInContinent(int num, String cont) {
 
@@ -274,6 +276,54 @@ public class App
             String sql4 = "select * " +
                     "from country " +
                     "where Continent = " + cont +
+                    "Order By Population desc Limit " + num + ";";
+            // Execute SQL statement
+            ResultSet rset4 = stmt.executeQuery(sql4);
+            // Return new country if valid.
+            // Check one is returned
+            while (rset4.next()) {
+                String code = rset4.getString("code");
+                String name = rset4.getString("name");
+                String continent = rset4.getString("continent");
+                String region = rset4.getString("region");
+                Integer surfaceArea = rset4.getInt("surfaceArea");
+                Integer indepYear = rset4.getInt("indepYear");
+                Integer population = rset4.getInt("population");
+                Integer lifeExpectancy = rset4.getInt("lifeExpectancy");
+                Integer gnp = rset4.getInt("gnp");
+                Integer gnpOld = rset4.getInt("gnpOld");
+                String localName = rset4.getString("localName");
+                String governmentForm = rset4.getString("governmentForm");
+                String headOfState = rset4.getString("headOfState");
+                Integer capital = rset4.getInt("capital");
+                String code2 = rset4.getString("code2");
+                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                sb.append(country.toString() + "\r\n");
+            }
+            // Displays the records
+            System.out.println(sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return;
+        }
+
+    }
+
+    //Top n populated countries in Region
+
+    private void TopPopulatedCountriesInRegion(int num, String reg) {
+
+        System.out.println("Top n populated countries in Region");
+        StringBuilder sb  = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql4 = "select * " +
+                    "from country " +
+                    "where Region = " + reg +
                     "Order By Population desc Limit " + num + ";";
             // Execute SQL statement
             ResultSet rset4 = stmt.executeQuery(sql4);
@@ -516,6 +566,7 @@ public class App
 //        a.countriesInRegionLargestToSmallest("'Caribbean'");
 //        a.TopPopulatedCountriesInWorld(5);
         a.TopPopulatedCountriesInContinent(5, "'Asia'");
+        a.TopPopulatedCountriesInRegion(3, "'Caribbean'");
 
         // Display all the cities in the world organised by largest population to smallest.
 //        a.report5();
