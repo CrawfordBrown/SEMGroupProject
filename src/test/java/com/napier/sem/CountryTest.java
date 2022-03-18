@@ -40,8 +40,20 @@ public class CountryTest {
     }
 
     @Test
-    void canSetCountryGermany() {
+    void canSetCountryName() {
        myCountry.setName("Scotland");
        assertEquals("Scotland", myCountry.getName());
+    }
+
+    @Test
+    void canGetCountryContinent() {
+        assertEquals("Europe", myCountry.getContinent()
+);
+    }
+
+    @Test
+    void canSetCountryContinent() {
+       myCountry.setContinent("Asia");
+       assertEquals("Asia", myCountry.getContinent());
     }
 }
