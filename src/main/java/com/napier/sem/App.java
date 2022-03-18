@@ -74,7 +74,7 @@ public class App
     All the countries in the world organised by largest population to smallest
      */
 
-    private void report1() {
+    private void countriesInWorldLargestToSmallest() {
 
         System.out.println("All the countries in the world organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -121,7 +121,7 @@ public class App
     All the countries in a continent organised by largest population to smallest
      */
 
-    private void report2(String cont) {
+    private void countriesInContinentLargestToSmallest(String cont) {
 
         System.out.println("All the countries in a continent organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -168,9 +168,9 @@ public class App
     }
 
 
-    //All the countries in a continent organised by largest population to smallest
+    //All the countries in a Region organised by largest population to smallest
 
-    private void report3(String reg) {
+    private void countriesInRegionLargestToSmallest(String reg) {
 
         System.out.println("All the countries in a Region organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -216,11 +216,11 @@ public class App
 
     }
 
-    //Top n populated countries
+    //Top n populated countries in world
 
-    private void report4(int num) {
+    private void TopPopulatedCountriesInWorld(int num) {
 
-        System.out.println("Top n populated countries");
+        System.out.println("Top n populated countries in world");
         StringBuilder sb  = new StringBuilder();
         try {
             // Create an SQL statement
@@ -228,6 +228,52 @@ public class App
             // Create string for SQL statement
             String sql4 = "select * " +
                     "from country " +
+                    "Order By Population desc Limit " + num + ";";
+            // Execute SQL statement
+            ResultSet rset4 = stmt.executeQuery(sql4);
+            // Return new country if valid.
+            // Check one is returned
+            while (rset4.next()) {
+                String code = rset4.getString("code");
+                String name = rset4.getString("name");
+                String continent = rset4.getString("continent");
+                String region = rset4.getString("region");
+                Integer surfaceArea = rset4.getInt("surfaceArea");
+                Integer indepYear = rset4.getInt("indepYear");
+                Integer population = rset4.getInt("population");
+                Integer lifeExpectancy = rset4.getInt("lifeExpectancy");
+                Integer gnp = rset4.getInt("gnp");
+                Integer gnpOld = rset4.getInt("gnpOld");
+                String localName = rset4.getString("localName");
+                String governmentForm = rset4.getString("governmentForm");
+                String headOfState = rset4.getString("headOfState");
+                Integer capital = rset4.getInt("capital");
+                String code2 = rset4.getString("code2");
+                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                sb.append(country.toString() + "\r\n");
+            }
+            // Displays the records
+            System.out.println(sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return;
+        }
+
+    }//Top n populated countries in continent
+
+    private void TopPopulatedCountriesInContinent(int num, String cont) {
+
+        System.out.println("Top n populated countries in Continent");
+        StringBuilder sb  = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql4 = "select * " +
+                    "from country " +
+                    "where Continent = " + cont +
                     "Order By Population desc Limit " + num + ";";
             // Execute SQL statement
             ResultSet rset4 = stmt.executeQuery(sql4);
@@ -465,25 +511,26 @@ public class App
         a.connect();
 
         // Display the Records
-        a.report1();
-        a.report2("'Asia'");
-        a.report3("'Caribbean'");
-        a.report4(5);
+//        a.countriesInWorldLargestToSmallest();
+//        a.countriesInContinentLargestToSmallest("'Asia'");
+//        a.countriesInRegionLargestToSmallest("'Caribbean'");
+//        a.TopPopulatedCountriesInWorld(5);
+        a.TopPopulatedCountriesInContinent(5, "'Asia'");
 
         // Display all the cities in the world organised by largest population to smallest.
-        a.report5();
-
-        // Display all the cities in a continent organised by largest population to smallest.
-        a.report6("'Europe'");
-
-        // Display all the cities in a region organised by largest population to smallest.
-        a.report7("'Middle East'");
-
-        // Display All the cities in a country organised by largest population to smallest.
-        a.report8("'Netherlands'");
-
-        // Display All the cities in a district organised by largest population to smallest.
-        a.report9("'Buenos Aires'");
+//        a.report5();
+//
+//        // Display all the cities in a continent organised by largest population to smallest.
+//        a.report6("'Europe'");
+//
+//        // Display all the cities in a region organised by largest population to smallest.
+//        a.report7("'Middle East'");
+//
+//        // Display All the cities in a country organised by largest population to smallest.
+//        a.report8("'Netherlands'");
+//
+//        // Display All the cities in a district organised by largest population to smallest.
+//        a.report9("'Buenos Aires'");
 
         // Disconnect from database
         a.disconnect();
