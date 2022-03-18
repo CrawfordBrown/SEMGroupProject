@@ -32,4 +32,16 @@ public class CountryTest {
        myCountry.setCode("GER");
        assertEquals("GER", myCountry.getCode());
     }
+
+    @Test
+    void canGetCountryName() {
+        assertEquals("Germany", myCountry.getName()
+);
+    }
+
+    @Test
+    void canSetCountryGermany() {
+       myCountry.setName("Scotland");
+       assertEquals("Scotland", myCountry.getName());
+    }
 }
