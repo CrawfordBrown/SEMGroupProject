@@ -22,8 +22,14 @@ public class CountryTest {
             "DE");
 
    @Test
-    void canGetId() {
+    void canGetCountryCode() {
         assertEquals("DEU", myCountry.getCode()
 );
+    }
+
+    @Test
+    void canSetCountryCode() {
+       myCountry.setCode("GER");
+       assertEquals("GER", myCountry.getCode());
     }
 }
