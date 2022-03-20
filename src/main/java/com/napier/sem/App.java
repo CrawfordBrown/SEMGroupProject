@@ -1,6 +1,11 @@
 package com.napier.sem;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App
 {
@@ -70,11 +75,12 @@ public class App
         }
     }
 
+
     /*
     All the countries in the world organised by largest population to smallest
      */
 
-    private void countriesInWorldLargestToSmallest() {
+    public void countriesInWorldLargestToSmallest() {
 
         System.out.println("All the countries in the world organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -112,7 +118,7 @@ public class App
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return;
+            return ;
         }
 
     }
@@ -121,7 +127,7 @@ public class App
     All the countries in a continent organised by largest population to smallest
      */
 
-    private void countriesInContinentLargestToSmallest(String cont) {
+    public void countriesInContinentLargestToSmallest(String cont) {
 
         System.out.println("All the countries in a continent organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -478,7 +484,7 @@ public class App
     All the cities in a country organised by largest population to smallest.
      */
 
-    private void report8(String coutry) {
+    public void report8(String coutry) {
 
         System.out.println("All the cities in a country organised by largest population to smallest.\n");
         StringBuilder sb = new StringBuilder();
@@ -518,7 +524,7 @@ public class App
         All the cities in a district organised by largest population to smallest.
      */
 
-    private void report9(String dist) {
+    public void report9(String dist) {
 
         System.out.println("All the cities in a district organised by largest population to smallest.\n\n");
         StringBuilder sb = new StringBuilder();
@@ -560,13 +566,14 @@ public class App
         // Connect to database
         a.connect();
 
+
         // Display the Records
 //        a.countriesInWorldLargestToSmallest();
 //        a.countriesInContinentLargestToSmallest("'Asia'");
 //        a.countriesInRegionLargestToSmallest("'Caribbean'");
 //        a.TopPopulatedCountriesInWorld(5);
-        a.TopPopulatedCountriesInContinent(5, "'Asia'");
-        a.TopPopulatedCountriesInRegion(3, "'Caribbean'");
+      //  a.TopPopulatedCountriesInContinent(5, "'Asia'");
+       // a.TopPopulatedCountriesInRegion(3, "'Caribbean'");
 
         // Display all the cities in the world organised by largest population to smallest.
 //        a.report5();
