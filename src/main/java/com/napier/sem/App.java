@@ -206,7 +206,7 @@ public class App
         All the cities in a region organised by largest population to smallest.
      */
 
-    private void report7(String reg) {
+    public ArrayList<City> report7(String reg) {
 
         System.out.println("All the cities in a region organised by largest population to smallest.");
         StringBuilder sb = new StringBuilder();
@@ -223,6 +223,9 @@ public class App
             ResultSet rset7 = stmt.executeQuery(sql7);
             // Return new cities if valid.
             // Check one is returned
+            ArrayList<City> reprt7 = new ArrayList<City>();
+
+
             while (rset7.next()) {
                 Integer id = rset7.getInt("id");
                 String name = rset7.getString("name");
@@ -233,11 +236,12 @@ public class App
                 sb.append(city.toString() + "\r\n");
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return reprt7;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
-            return;
+            return null;
         }
 
     }
