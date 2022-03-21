@@ -489,7 +489,94 @@ public class App
         }
     }
 
-    
+
+    public ArrayList<Country> reportCapitalPopulation2(String userContinent) {
+        System.out.println("All the capital cities in a continent organised by largest population to smallest");
+        StringBuilder sb = new StringBuilder();
+        try{
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlCP2 = "select Capital from country where Continent = " + userContinent + " order by Population desc;";
+            // execute SQL statement
+            ResultSet resultCP2 = stmt.executeQuery(sqlCP2);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportCP2 = new ArrayList<Country>();
+
+            while (resultCP2.next()) {
+                String code = resultCP2.getString("code"); //MAKE SURE THIS WORKS, RANDOM
+                String name = resultCP2.getString("name");
+                String continent = resultCP2.getString("continent");
+                String region = resultCP2.getString("region");
+                Integer surfaceArea = resultCP2.getInt("surfaceArea");
+                Integer indepYear = resultCP2.getInt("indepYear");
+                Integer population = resultCP2.getInt("population");
+                Integer lifeExpectancy = resultCP2.getInt("lifeExpectancy");
+                Integer gnp = resultCP2.getInt("gnp");
+                Integer gnpOld = resultCP2.getInt("gnpOld");
+                String localName = resultCP2.getString("localName");
+                String governmentForm = resultCP2.getString("governmentForm");
+                String headOfState = resultCP2.getString("headOfState");
+                Integer capital = resultCP2.getInt("capital");
+                String code2 = resultCP2.getString("code2");
+                Country countries = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                reportCP2.add(countries);
+            }
+            //Display the record
+            return reportCP2;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get capital city details");
+            return null;
+        }
+    }
+
+
+    public ArrayList<Country> reportCapitalPopulation3(String userRegion) {
+        System.out.println("All the capital cities in the world organised by largest population to smallest");
+        StringBuilder sb = new StringBuilder();
+        try{
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlCP3 = "select Capital from country where Region = " + userRegion + " order by Population desc;";
+            // execute SQL statement
+            ResultSet resultCP3 = stmt.executeQuery(sqlCP3);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportCP3 = new ArrayList<Country>();
+
+            while (resultCP3.next()) {
+                String code = resultCP3.getString("code"); //MAKE SURE THIS WORKS, RANDOM
+                String name = resultCP3.getString("name");
+                String continent = resultCP3.getString("continent");
+                String region = resultCP3.getString("region");
+                Integer surfaceArea = resultCP3.getInt("surfaceArea");
+                Integer indepYear = resultCP3.getInt("indepYear");
+                Integer population = resultCP3.getInt("population");
+                Integer lifeExpectancy = resultCP3.getInt("lifeExpectancy");
+                Integer gnp = resultCP3.getInt("gnp");
+                Integer gnpOld = resultCP3.getInt("gnpOld");
+                String localName = resultCP3.getString("localName");
+                String governmentForm = resultCP3.getString("governmentForm");
+                String headOfState = resultCP3.getString("headOfState");
+                Integer capital = resultCP3.getInt("capital");
+                String code2 = resultCP3.getString("code2");
+                Country countries = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                reportCP2.add(countries);
+            }
+            //Display the record
+            return reportCP2;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get capital city details");
+            return null;
+        }
+    }
+
 
     public static void main(String[] args) {
         // Create new Application
