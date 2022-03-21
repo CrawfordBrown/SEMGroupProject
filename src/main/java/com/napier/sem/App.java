@@ -566,10 +566,10 @@ public class App
                 String code2 = resultCP3.getString("code2");
                 Country countries = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                reportCP2.add(countries);
+                reportCP3.add(countries);
             }
             //Display the record
-            return reportCP2;
+            return reportCP3;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get capital city details");
@@ -628,6 +628,12 @@ public class App
 
         // Display all the capital cities in the world organised by largest population to smallest.
         ArrayList<Country> reportCP1 = a.reportCapitalPopulation1(); // FILL IN ANSWER *NOTE FOR SAM*
+
+        // Display all the capital cities in a continent organised by largest population to smallest.
+        ArrayList<Country> reportCP2 = a.reportCapitalPopulation2(); // FILL IN ANSWER *NOTE FOR SAM*
+
+        // Display all the capital cities in a region organised by largest population to smallest.
+        ArrayList<Country> reportCP3 = a.reportCapitalPopulation3(); // FILL IN ANSWER *NOTE FOR SAM*
 
         // Disconnect from database
         a.disconnect();
