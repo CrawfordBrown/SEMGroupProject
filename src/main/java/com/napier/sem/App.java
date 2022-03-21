@@ -225,7 +225,6 @@ public class App
             // Check one is returned
             ArrayList<City> reprt7 = new ArrayList<City>();
 
-
             while (rset7.next()) {
                 Integer id = rset7.getInt("id");
                 String name = rset7.getString("name");
@@ -250,7 +249,7 @@ public class App
     All the cities in a country organised by largest population to smallest.
      */
 
-    private void report8(String coutry) {
+    public ArrayList<City> report8(String coutry) {
 
         System.out.println("All the cities in a country organised by largest population to smallest.\n");
         StringBuilder sb = new StringBuilder();
@@ -267,6 +266,8 @@ public class App
             ResultSet rset8 = stmt.executeQuery(sql8);
             // Return new cities if valid.
             // Check one is returned
+            ArrayList<City> reprt8 = new ArrayList<City>();
+
             while (rset8.next()) {
                 Integer id = rset8.getInt("id");
                 String name = rset8.getString("name");
@@ -277,11 +278,11 @@ public class App
                 sb.append(city.toString() + "\r\n");
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return reprt8;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
-            return;
+            return null;
         }
 
     }
@@ -469,10 +470,10 @@ public class App
         ArrayList<City> repet6 = a.report6("'Europe'");
 
         // Display all the cities in a region organised by largest population to smallest.
-        //a.report7("'Middle East'");
+        ArrayList<City> repet7 = a.report7("'Middle East'");
 
         // Display all the cities in a country organised by largest population to smallest.
-        //a.report8("'Netherlands'");
+        ArrayList<City> repet8 = a.report8("'Netherlands'");
 
         // Display all the cities in a district organised by largest population to smallest.
         //a.report9("'Buenos Aires'");
