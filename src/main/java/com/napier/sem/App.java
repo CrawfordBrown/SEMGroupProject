@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App
 {
@@ -74,7 +75,7 @@ public class App
     All the countries in the world organised by largest population to smallest
      */
 
-    private void report1() {
+    public ArrayList<Country> report1() {
 
         System.out.println("All the countries in the world organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -87,8 +88,9 @@ public class App
             ResultSet rset = stmt.executeQuery(sql);
             // Return new country if valid.
             // Check one is returned
+            ArrayList<Country> reprt1 = new ArrayList<Country>();
             while (rset.next()) {
-                String code = rset.getString("code");
+                String code = rset.getString("code"); //MAKE SURE THIS WORKS, RANDOM
                 String name = rset.getString("name");
                 String continent = rset.getString("continent");
                 String region = rset.getString("region");
@@ -103,19 +105,23 @@ public class App
                 String headOfState = rset.getString("headOfState");
                 Integer capital = rset.getInt("capital");
                 String code2 = rset.getString("code2");
-                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                Country coutry = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                sb.append(country.toString() + "\r\n");
+                reprt1.add(coutry);
+
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return reprt1;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return;
+            return null;
         }
 
     }
+
+
 
     /*
     All the cities in the world organised by largest population to smallest.
@@ -391,6 +397,48 @@ public class App
 
     }
 
+    /*
+        The Top N populated cities in a region where N is provided by the user
+    */
+    private void report12(int num) {
+
+        System.out.println("The Top N populated cities in a region where N is provided by the user.\n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql12 = "SELECT * \n"+
+                    "FROM city\n"+
+                    "JOIN country ON city.CountryCode = country.Code\n"+
+                    "WHERE country.Region = 'Southern and Central Asia'\n"+
+                    "ORDER BY city.Population DESC\n"+
+                    "LIMIT "+ num + ";";
+
+            // Execute SQL statement
+            ResultSet rset12 = stmt.executeQuery(sql12);
+            // Return new cities if valid.
+            // Check one is returned
+            while (rset12.next()) {
+                Integer id = rset12.getInt("id");
+                String name = rset12.getString("name");
+                String countryCode = rset12.getString("countryCode");
+                String district = rset12.getString("district");
+                Integer population = rset12.getInt("population");
+                City city = new City(id, name, countryCode, district, population);
+                sb.append(city.toString() + "\r\n");
+            }
+            // Displays the records
+            System.out.println(sb.toString());
+            //recordsReportArray.push(sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return;
+        }
+
+    }
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -399,8 +447,16 @@ public class App
         a.connect();
 
         // Display the Records
-        //a.report1();
+        ArrayList<Country> repet1 = a.report1();
 
+        /*
+        for(Country coun : repet1){
+            String coun_string = coun.getCode();
+            System.out.println(coun_string);
+        }
+        */
+
+         
         // Display all the cities in the world organised by largest population to smallest.
         //a.report5();
 
@@ -420,9 +476,10 @@ public class App
         //a.report10(4);
 
         // Display the top N populated cities in a continent where N is provided by the user.
-        a.report11(4);
+        //a.report11(4);
 
         // Display the top N populated cities in a region where N is provided by the user.
+        //a.report12(4);
 
         // Display the top N populated cities in a country where N is provided by the user.
 

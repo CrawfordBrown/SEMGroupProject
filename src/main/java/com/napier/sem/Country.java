@@ -20,6 +20,7 @@ public class Country {
     private Integer capital;
     private String code2;
 
+
     public Country(String code, String name, String continent, String region, Integer surfaceArea, Integer indepYear, Integer population, Integer lifeExpectancy, Integer gnp, Integer gnpOld, String localName, String governmentForm, String headOfState, Integer capital, String code2) {
         this.code = code;
         this.name = name;
