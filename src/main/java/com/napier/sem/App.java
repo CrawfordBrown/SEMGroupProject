@@ -560,11 +560,10 @@ public class App
     }
 
     public static void main(String[] args) {
-        // Create new Application
+        // Create new Application and connect to database
         App a = new App();
 
-        // Connect to database
-        a.connect();
+
 
 
         // Display the Records
