@@ -105,9 +105,9 @@ public class App
                 String headOfState = rset.getString("headOfState");
                 Integer capital = rset.getInt("capital");
                 String code2 = rset.getString("code2");
-                Country coutry = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                Country countries = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                reprt1.add(coutry);
+                reprt1.add(countries);
 
             }
             // Displays the records
@@ -127,7 +127,7 @@ public class App
     All the cities in the world organised by largest population to smallest.
      */
 
-    private void report5() {
+    public ArrayList<City> report5() {
 
         System.out.println("All the cities in the world organised by largest population to smallest.");
         StringBuilder sb = new StringBuilder();
@@ -140,23 +140,23 @@ public class App
             ResultSet rset5 = stmt.executeQuery(sql5);
             // Return new cities if valid.
             // Check one is returned
-            while (rset5.next()) {
+            ArrayList<City> reprt5 = new ArrayList<City>();
 
+            while (rset5.next()) {
                 Integer id = rset5.getInt("id");
                 String name = rset5.getString("name");
                 String countryCode = rset5.getString("countryCode");
                 String district = rset5.getString("district");
                 Integer population = rset5.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
-                sb.append(city.toString() + "\r\n");
+                reprt5.add(city);
             }
             // Displays the records
-
-            System.out.println(sb.toString());
+            return reprt5;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
-            return;
+            return null;
         }
 
     }
@@ -164,7 +164,7 @@ public class App
     All the cities in a continent organised by largest population to smallest.
      */
 
-    private void report6(String cont) {
+    public ArrayList<City> report6(String cont) {
 
         System.out.println("All the cities in a continent organised by largest population to smallest.\n");
         StringBuilder sb = new StringBuilder();
@@ -181,6 +181,8 @@ public class App
             ResultSet rset6 = stmt.executeQuery(sql6);
             // Return new cities if valid.
             // Check one is returned
+            ArrayList<City> reprt6 = new ArrayList<City>();
+
             while (rset6.next()) {
                 Integer id = rset6.getInt("id");
                 String name = rset6.getString("name");
@@ -188,14 +190,14 @@ public class App
                 String district = rset6.getString("district");
                 Integer population = rset6.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
-                sb.append(city.toString() + "\r\n");
+                reprt6.add(city);
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return reprt6;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
-            return;
+            return null;
         }
 
     }
@@ -456,9 +458,8 @@ public class App
         }
         */
 
-         
         // Display all the cities in the world organised by largest population to smallest.
-        //a.report5();
+        ArrayList<City> repet5 = a.report5();
 
         // Display all the cities in a continent organised by largest population to smallest.
         //a.report6("'Europe'");
