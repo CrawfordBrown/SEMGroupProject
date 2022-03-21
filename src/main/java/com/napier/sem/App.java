@@ -453,6 +453,49 @@ public class App
 
     }
 
+    /*
+    The Top N populated cities in a country where N is provided by the user
+    */
+    public ArrayList<City> report13(int num) {
+
+        System.out.println("The Top N populated cities in a country where N is provided by the user.\n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql13 = "SELECT * \n"+
+                    "FROM city\n"+
+                    "JOIN country ON city.CountryCode = country.Code\n"+
+                    "WHERE country.Name = 'Bulgaria'\n"+
+                    "ORDER BY city.Population DESC\n"+
+                    "LIMIT "+ num + ";";
+
+            // Execute SQL statement
+            ResultSet rset13 = stmt.executeQuery(sql13);
+            // Return new cities if valid.
+            // Check one is returned
+            ArrayList<City> reprt13 = new ArrayList<City>();
+
+            while (rset13.next()) {
+                Integer id = rset13.getInt("id");
+                String name = rset13.getString("name");
+                String countryCode = rset13.getString("countryCode");
+                String district = rset13.getString("district");
+                Integer population = rset13.getInt("population");
+                City city = new City(id, name, countryCode, district, population);
+                reprt13.add(city);
+            }
+            // Displays the records
+            return reprt13;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+
+    }
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -495,6 +538,7 @@ public class App
         ArrayList<City> repet12 = a.report12(4);
 
         // Display the top N populated cities in a country where N is provided by the user.
+        ArrayList<City> repet13 = a.report13(4);
 
         // Display The top N populated cities in a district where N is provided by the user.
 
