@@ -413,7 +413,7 @@ public class App
     /*
         The Top N populated cities in a region where N is provided by the user
     */
-    private void report12(int num) {
+    public ArrayList<City> report12(int num) {
 
         System.out.println("The Top N populated cities in a region where N is provided by the user.\n\n");
         StringBuilder sb = new StringBuilder();
@@ -432,6 +432,8 @@ public class App
             ResultSet rset12 = stmt.executeQuery(sql12);
             // Return new cities if valid.
             // Check one is returned
+            ArrayList<City> reprt12 = new ArrayList<City>();
+
             while (rset12.next()) {
                 Integer id = rset12.getInt("id");
                 String name = rset12.getString("name");
@@ -439,15 +441,14 @@ public class App
                 String district = rset12.getString("district");
                 Integer population = rset12.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
-                sb.append(city.toString() + "\r\n");
+                reprt12.add(city);
             }
             // Displays the records
-            System.out.println(sb.toString());
-            //recordsReportArray.push(sb.toString());
+            return reprt12;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
-            return;
+            return null;
         }
 
     }
@@ -491,7 +492,7 @@ public class App
         ArrayList<City> repet11 = a.report11(4);
 
         // Display the top N populated cities in a region where N is provided by the user.
-        //a.report12(4);
+        ArrayList<City> repet12 = a.report12(4);
 
         // Display the top N populated cities in a country where N is provided by the user.
 
