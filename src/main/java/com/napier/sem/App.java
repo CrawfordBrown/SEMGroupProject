@@ -445,6 +445,52 @@ public class App
 
     }
 
+
+    public ArrayList<Country> reportCapitalPopulation1() {
+        System.out.println("All the capital cities in the world organised by largest population to smallest");
+        StringBuilder sb = new StringBuilder();
+        try{
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlCP1 = "select Capital from country order by Population desc;";
+            // execute SQL statement
+            ResultSet resultCP1 = stmt.executeQuery(sqlCP1);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportCP1 = new ArrayList<Country>();
+
+            while (resultCP1.next()) {
+                String code = resultCP1.getString("code"); //MAKE SURE THIS WORKS, RANDOM
+                String name = resultCP1.getString("name");
+                String continent = resultCP1.getString("continent");
+                String region = resultCP1.getString("region");
+                Integer surfaceArea = resultCP1.getInt("surfaceArea");
+                Integer indepYear = resultCP1.getInt("indepYear");
+                Integer population = resultCP1.getInt("population");
+                Integer lifeExpectancy = resultCP1.getInt("lifeExpectancy");
+                Integer gnp = resultCP1.getInt("gnp");
+                Integer gnpOld = resultCP1.getInt("gnpOld");
+                String localName = resultCP1.getString("localName");
+                String governmentForm = resultCP1.getString("governmentForm");
+                String headOfState = resultCP1.getString("headOfState");
+                Integer capital = resultCP1.getInt("capital");
+                String code2 = resultCP1.getString("code2");
+                Country countries = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                reportCP1.add(countries);
+            }
+            //Display the record
+            return reportCP1;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get capital city details");
+            return null;
+        }
+    }
+
+    
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -492,6 +538,9 @@ public class App
         // Display the top N populated cities in a country where N is provided by the user.
 
         // Display The top N populated cities in a district where N is provided by the user.
+
+        // Display all the capital cities in the world organised by largest population to smallest.
+        ArrayList<Country> reportCP1 = a.reportCapitalPopulation1(); // FILL IN ANSWER *NOTE FOR SAM*
 
         // Disconnect from database
         a.disconnect();
