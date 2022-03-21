@@ -462,7 +462,7 @@ public class App
         ArrayList<City> repet5 = a.report5();
 
         // Display all the cities in a continent organised by largest population to smallest.
-        //a.report6("'Europe'");
+        ArrayList<City> repet6 = a.report6("'Europe'");
 
         // Display all the cities in a region organised by largest population to smallest.
         //a.report7("'Middle East'");
