@@ -351,6 +351,46 @@ public class App
 
     }
 
+    /*
+    The Top N populated cities in a continent where N is provided by the user.
+    */
+    private void report11(int num) {
+
+        System.out.println("the top N populated cities in a continent where N is provided by the user.\n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql11 = "SELECT * \n" +
+                    "FROM city\n" +
+                    "LEFT JOIN country ON city.CountryCode = country.Code\n"+
+                    "WHERE country.Continent = 'Africa'\n"+
+                    "ORDER BY city.Population DESC\n"+
+                    "LIMIT "+ num + ";";
+            // Execute SQL statement
+            ResultSet rset11 = stmt.executeQuery(sql11);
+            // Return new cities if valid.
+            // Check one is returned
+            while (rset11.next()) {
+                Integer id = rset11.getInt("id");
+                String name = rset11.getString("name");
+                String countryCode = rset11.getString("countryCode");
+                String district = rset11.getString("district");
+                Integer population = rset11.getInt("population");
+                City city = new City(id, name, countryCode, district, population);
+                sb.append(city.toString() + "\r\n");
+            }
+            // Displays the records
+            System.out.println(sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return;
+        }
+
+    }
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -370,14 +410,23 @@ public class App
         // Display all the cities in a region organised by largest population to smallest.
         //a.report7("'Middle East'");
 
-        // Display All the cities in a country organised by largest population to smallest.
+        // Display all the cities in a country organised by largest population to smallest.
         //a.report8("'Netherlands'");
 
-        // Display All the cities in a district organised by largest population to smallest.
+        // Display all the cities in a district organised by largest population to smallest.
         //a.report9("'Buenos Aires'");
 
-        // Display top N populated cities in the world where N is provided by the user.
-        a.report10(4);
+        // Display the top N populated cities in the world where N is provided by the user.
+        //a.report10(4);
+
+        // Display the top N populated cities in a continent where N is provided by the user.
+        a.report11(4);
+
+        // Display the top N populated cities in a region where N is provided by the user.
+
+        // Display the top N populated cities in a country where N is provided by the user.
+
+        // Display The top N populated cities in a district where N is provided by the user.
 
         // Disconnect from database
         a.disconnect();
