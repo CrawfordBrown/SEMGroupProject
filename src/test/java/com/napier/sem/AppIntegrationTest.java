@@ -20,6 +20,20 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetCountry()
+    {
+        Country country = app.getCountry("Spain").get(5);
+        assertEquals(country.getPopulation(), 1013662000);
+    }
+
+    @Test
+    void testGetCity()
+    {
+        City city = app.getCities("Bombay").get(5);
+        assertEquals(city.getPopulation(), 1013662000);
+
+    }
     /*
     @Test
     void testGetEmployee()
