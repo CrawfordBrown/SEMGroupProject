@@ -232,7 +232,7 @@ public class App
                 String district = rset7.getString("district");
                 Integer population = rset7.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
-                sb.append(city.toString() + "\r\n");
+                reprt7.add(city);
             }
             // Displays the records
             return reprt7;
@@ -275,7 +275,7 @@ public class App
                 String district = rset8.getString("district");
                 Integer population = rset8.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
-                sb.append(city.toString() + "\r\n");
+                reprt8.add(city);
             }
             // Displays the records
             return reprt8;
@@ -291,7 +291,7 @@ public class App
         All the cities in a district organised by largest population to smallest.
      */
 
-    private void report9(String dist) {
+    public ArrayList<City> report9(String dist) {
 
         System.out.println("All the cities in a district organised by largest population to smallest.\n\n");
         StringBuilder sb = new StringBuilder();
@@ -307,6 +307,8 @@ public class App
             ResultSet rset9 = stmt.executeQuery(sql9);
             // Return new cities if valid.
             // Check one is returned
+            ArrayList<City> reprt9 = new ArrayList<City>();
+
             while (rset9.next()) {
                 Integer id = rset9.getInt("id");
                 String name = rset9.getString("name");
@@ -314,14 +316,14 @@ public class App
                 String district = rset9.getString("district");
                 Integer population = rset9.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
-                sb.append(city.toString() + "\r\n");
+                reprt9.add(city);
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return reprt9;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
-            return;
+            return null;
         }
 
     }
@@ -329,7 +331,7 @@ public class App
     /*
         The top N populated cities in the world where N is provided by the user.
      */
-    private void report10(int num) {
+    public ArrayList<City> report10(int num) {
 
         System.out.println("The top N populated cities in the world where N is provided by the user.\n\n");
         StringBuilder sb = new StringBuilder();
@@ -345,6 +347,8 @@ public class App
             ResultSet rset10 = stmt.executeQuery(sql10);
             // Return new cities if valid.
             // Check one is returned
+            ArrayList<City> reprt10 = new ArrayList<City>();
+
             while (rset10.next()) {
                 Integer id = rset10.getInt("id");
                 String name = rset10.getString("name");
@@ -352,14 +356,14 @@ public class App
                 String district = rset10.getString("district");
                 Integer population = rset10.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
-                sb.append(city.toString() + "\r\n");
+                reprt10.add(city);
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return reprt10;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get world details");
-            return;
+            return null;
         }
 
     }
@@ -476,7 +480,7 @@ public class App
         ArrayList<City> repet8 = a.report8("'Netherlands'");
 
         // Display all the cities in a district organised by largest population to smallest.
-        //a.report9("'Buenos Aires'");
+        ArrayList<City> repet9 = a.report9("'Buenos Aires'");
 
         // Display the top N populated cities in the world where N is provided by the user.
         //a.report10(4);
