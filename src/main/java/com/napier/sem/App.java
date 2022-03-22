@@ -120,11 +120,11 @@ public class App
                 report1.add(country);
             }
             // Displays the records
-//            return report1;
-            for(int i = 0; i < report1.size(); i++) {
-                System.out.println(report1.get(i).toString());
-            }
-            return null;
+               return report1;
+//                for(int i = 0; i < report1.size(); i++) {
+//                System.out.println(report1.get(i).toString());
+//            }
+//            return null;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -137,7 +137,7 @@ public class App
     All the countries in a continent organised by largest population to smallest
      */
 
-    public void countriesInContinentLargestToSmallest(String cont) {
+    public ArrayList<Country> countriesInContinentLargestToSmallest(String cont) {
 
         System.out.println("All the countries in a continent organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -153,6 +153,9 @@ public class App
             ResultSet rset2 = stmt.executeQuery(sql2);
             // Return new country if valid.
             // Check one is returned
+
+            ArrayList<Country> report2 = new ArrayList<Country>();
+
             while (rset2.next()) {
                 String code = rset2.getString("code");
                 String name = rset2.getString("name");
@@ -172,13 +175,15 @@ public class App
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
                 sb.append(country.toString() + "\r\n");
+                report2.add(country);
             }
             // Displays the records
-            System.out.println(sb.toString());
+                return report2;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return;
+            return null;
         }
 
     }
@@ -186,7 +191,7 @@ public class App
 
     //All the countries in a Region organised by largest population to smallest
 
-    private void countriesInRegionLargestToSmallest(String reg) {
+    public ArrayList<Country> countriesInRegionLargestToSmallest(String reg) {
 
         System.out.println("All the countries in a Region organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -202,6 +207,8 @@ public class App
             ResultSet rset3 = stmt.executeQuery(sql3);
             // Return new country if valid.
             // Check one is returned
+            ArrayList<Country> report3 = new ArrayList<Country>();
+
             while (rset3.next()) {
                 String code = rset3.getString("code");
                 String name = rset3.getString("name");
@@ -221,20 +228,21 @@ public class App
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
                 sb.append(country.toString() + "\r\n");
+                report3.add(country);
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return report3;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return;
+            return null;
         }
 
     }
 
     //Top n populated countries in world
 
-    private void TopPopulatedCountriesInWorld(int num) {
+    public ArrayList<Country> TopPopulatedCountriesInWorld(int num) {
 
         System.out.println("Top n populated countries in world");
         StringBuilder sb  = new StringBuilder();
@@ -249,6 +257,8 @@ public class App
             ResultSet rset4 = stmt.executeQuery(sql4);
             // Return new country if valid.
             // Check one is returned
+            ArrayList<Country> report4 = new ArrayList<Country>();
+
             while (rset4.next()) {
                 String code = rset4.getString("code");
                 String name = rset4.getString("name");
@@ -268,20 +278,21 @@ public class App
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
                 sb.append(country.toString() + "\r\n");
+                report4.add(country);
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return report4;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return;
+            return null;
         }
 
     }
 
     //Top n populated countries in continent
 
-    private void TopPopulatedCountriesInContinent(int num, String cont) {
+    public ArrayList<Country> TopPopulatedCountriesInContinent(int num, String cont) {
 
         System.out.println("Top n populated countries in Continent");
         StringBuilder sb  = new StringBuilder();
@@ -297,6 +308,8 @@ public class App
             ResultSet rset4 = stmt.executeQuery(sql4);
             // Return new country if valid.
             // Check one is returned
+            ArrayList<Country> report5 = new ArrayList<Country>();
+
             while (rset4.next()) {
                 String code = rset4.getString("code");
                 String name = rset4.getString("name");
@@ -316,20 +329,21 @@ public class App
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
                 sb.append(country.toString() + "\r\n");
+                report5.add(country);
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return report5;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return;
+            return null;
         }
 
     }
 
     //Top n populated countries in Region
 
-    private void TopPopulatedCountriesInRegion(int num, String reg) {
+    public ArrayList<Country> TopPopulatedCountriesInRegion(int num, String reg) {
 
         System.out.println("Top n populated countries in Region");
         StringBuilder sb  = new StringBuilder();
@@ -345,6 +359,8 @@ public class App
             ResultSet rset4 = stmt.executeQuery(sql4);
             // Return new country if valid.
             // Check one is returned
+            ArrayList<Country> report6 = new ArrayList<Country>();
+
             while (rset4.next()) {
                 String code = rset4.getString("code");
                 String name = rset4.getString("name");
@@ -364,13 +380,14 @@ public class App
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
                 sb.append(country.toString() + "\r\n");
+                report6.add(country);
             }
             // Displays the records
-            System.out.println(sb.toString());
+            return report6;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return;
+            return null;
         }
 
     }
