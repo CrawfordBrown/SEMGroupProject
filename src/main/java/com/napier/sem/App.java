@@ -80,7 +80,9 @@ public class App
     All the countries in the world organised by largest population to smallest
      */
 
-    public void countriesInWorldLargestToSmallest() {
+
+
+    public ArrayList<Country> countriesInWorldLargestToSmallest() {
 
         System.out.println("All the countries in the world organised by largest population to smallest");
         StringBuilder sb  = new StringBuilder();
@@ -93,6 +95,9 @@ public class App
             ResultSet rset = stmt.executeQuery(sql);
             // Return new country if valid.
             // Check one is returned
+
+            ArrayList<Country> report1 = new ArrayList<Country>();
+
             while (rset.next()) {
                 String code = rset.getString("code");
                 String name = rset.getString("name");
@@ -112,15 +117,20 @@ public class App
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
                 sb.append(country.toString() + "\r\n");
+                report1.add(country);
             }
             // Displays the records
-            System.out.println(sb.toString());
+//            return report1;
+            for(int i = 0; i < report1.size(); i++) {
+                System.out.println(report1.get(i).toString());
+            }
+            return null;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return ;
+            return null;
         }
-
     }
 
      /*
@@ -568,7 +578,8 @@ public class App
 
 
         // Display the Records
-//        a.countriesInWorldLargestToSmallest();
+
+          a.countriesInWorldLargestToSmallest();
 //        a.countriesInContinentLargestToSmallest("'Asia'");
 //        a.countriesInRegionLargestToSmallest("'Caribbean'");
 //        a.TopPopulatedCountriesInWorld(5);
