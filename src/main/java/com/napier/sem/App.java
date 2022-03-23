@@ -76,6 +76,27 @@ public class App
     }
 
 
+
+    public static void printCountries(ArrayList<Country> countries)
+    {
+        if (countries == null)
+        {
+            System.out.println("No countries");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-5s %-50s %-20s %-35s %-20s %-20s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        // Loop over all countries in the list
+        for (Country country : countries)
+        {
+            if (country == null)
+            {
+                continue;
+            }
+            System.out.println(String.format("%-5s %-50s %-20s %-35s %-20s %-20s", country.code, country.name, country.continent, country.region, country.population, country.capital));
+        }
+    }
+
     /*
     All the countries in the world organised by largest population to smallest
      */
