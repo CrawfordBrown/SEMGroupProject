@@ -18,7 +18,7 @@ public class CityTest {
 
     @Test
     void canSetCityID() {
-        myCity.setID("3069");
+        myCity.setID(3069);
         assertEquals(3069, myCity.getId());
     }
 
