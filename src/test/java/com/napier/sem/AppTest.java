@@ -10,7 +10,7 @@ public class AppTest {
     static void init() {
         app = new App();
     }
-
+/*
     @Test
     void testCountriesLargestToSmallest() {
         app.countriesInWorldLargestToSmallest();
@@ -20,4 +20,5 @@ public class AppTest {
     void testCountriesInContinentLargestToSmallest() {
         app.countriesInContinentLargestToSmallest("'Asia'");
     }
+    */
 }
