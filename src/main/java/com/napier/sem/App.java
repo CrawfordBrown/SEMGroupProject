@@ -797,7 +797,7 @@ public class App
 
         // ---------------------------------------------------------
 
-        ArrayList<Country> getCountries = a.getCountry("Spain");
+        a.getCountry("Spain");
 
         ArrayList<City> getCities = a.getCities("Bombay");
 
