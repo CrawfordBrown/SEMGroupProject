@@ -61,19 +61,19 @@ public class App {
         ArrayList<Country> reportCP1 = a.reportCapitalPopulation1(); // FILL IN ANSWER *NOTE FOR SAM*
 
         // Display all the capital cities in a continent organised by largest population to smallest.
-        ArrayList<Country> reportCP2 = a.reportCapitalPopulation2(); // FILL IN ANSWER *NOTE FOR SAM*
+        ArrayList<Country> reportCP2 = a.reportCapitalPopulation2( "'Africa'"); // FILL IN ANSWER *NOTE FOR SAM*
 
         // Display all the capital cities in a region organised by largest population to smallest.
-        ArrayList<Country> reportCP3 = a.reportCapitalPopulation3(); // FILL IN ANSWER *NOTE FOR SAM*
+        ArrayList<Country> reportCP3 = a.reportCapitalPopulation3( "'Caribbean'" ); // FILL IN ANSWER *NOTE FOR SAM*
 
         //Display top N populated capital cities in the world where N is provided by the user.
-        ArrayList<Country> reportTC1 = a.topCapital1(); // FILL IN ANSWER *NOTE FOR SAM*
+        ArrayList<Country> reportTC1 = a.topCapital1(5 ); // FILL IN ANSWER *NOTE FOR SAM*
 
         //Display top N populated capital cities in the world where N is provided by the user.
-        ArrayList<Country> reportTC2 = a.topCapital2(); // FILL IN ANSWER *NOTE FOR SAM*
+        ArrayList<Country> reportTC2 = a.topCapital2( 3, "'Asia'"); // FILL IN ANSWER *NOTE FOR SAM*
 
         //Display top N populated capital cities in the world where N is provided by the user.
-        ArrayList<Country> reportTC3 = a.topCapital3(); // FILL IN ANSWER *NOTE FOR SAM*
+        ArrayList<Country> reportTC3 = a.topCapital3( 4, "'Caribbean"); // FILL IN ANSWER *NOTE FOR SAM*
 
 
         // Disconnect from database
@@ -732,4 +732,4 @@ public class App {
 
 
 
-}
+
