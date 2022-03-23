@@ -528,11 +528,15 @@ public class App
         // Create new Application
         App a = new App();
 
+
+        // ------------------ Testing -------------------------------
         if(args.length < 1){
             a.connect("localhost:33060", 30000);
         }else{
             a.connect(args[0], Integer.parseInt(args[1]));
         }
+
+        // ---------------------------------------------------------
 
         ArrayList<Country> getCountries = a.getCountry("Spain");
 
