@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - lab08
+      - 646sam
 jobs:
   UnitTests:
     name: Unit Tests

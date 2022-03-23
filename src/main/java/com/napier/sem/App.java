@@ -66,6 +66,16 @@ public class App {
         // Display all the capital cities in a region organised by largest population to smallest.
         ArrayList<Country> reportCP3 = a.reportCapitalPopulation3(); // FILL IN ANSWER *NOTE FOR SAM*
 
+        //Display top N populated capital cities in the world where N is provided by the user.
+        ArrayList<Country> reportTC1 = a.topCapital1(); // FILL IN ANSWER *NOTE FOR SAM*
+
+        //Display top N populated capital cities in the world where N is provided by the user.
+        ArrayList<Country> reportTC2 = a.topCapital2(); // FILL IN ANSWER *NOTE FOR SAM*
+
+        //Display top N populated capital cities in the world where N is provided by the user.
+        ArrayList<Country> reportTC3 = a.topCapital3(); // FILL IN ANSWER *NOTE FOR SAM*
+
+
         // Disconnect from database
         a.disconnect();
     }
@@ -658,14 +668,14 @@ public class App {
         }
     }
 
-    public ArrayList<Country> topCapital2(int topNPopulatedCapitalCities) {
-        System.out.println("The top N populated capital cities in the world where N is provided by the user \n\n");
+    public ArrayList<Country> topCapital2(int topNPopulatedCapitalCities, String userContinent) {
+        System.out.println("The top N populated capital cities in a continent where N is provided by the user \n\n");
         StringBuilder sb = new StringBuilder();
         try {
             //Create an SQL statement
             Statement stmt = con.createStatement();
             //create string for SQL statement
-            String sqlTC2 = "SELECT Capital FROM country ORDER BY Population DESC LIMIT " + topNPopulatedCapitalCities + ";";
+            String sqlTC2 = "SELECT Capital FROM country WHERE Continent = " + userContinent + " ORDER BY Population DESC LIMIT " + topNPopulatedCapitalCities + ";";
             // execute SQL statement
             ResultSet resultTC2 = stmt.executeQuery(sqlTC2);
             // return capital cities if valid
@@ -687,5 +697,39 @@ public class App {
             return null;
         }
     }
+
+    public ArrayList<Country> topCapital3(int topNPopulatedCapitalCities, String userRegion) {
+        System.out.println("The top N populated capital cities in a region where N is provided by the user.  \n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlTC3 = "SELECT Capital FROM country WHERE Region = " + userRegion + " ORDER BY Population DESC LIMIT " + topNPopulatedCapitalCities + ";";
+            // execute SQL statement
+            ResultSet resultTC3 = stmt.executeQuery(sqlTC3);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportTC3 = new ArrayList<Country>();
+
+            while (resultTC3.next()) {
+                Country countries = new Country(resultTC3.getString("code"), resultTC3.getString("name"), resultTC3.getString("continent"),
+                        resultTC3.getString("region"), resultTC3.getInt("surfaceArea"), resultTC3.getInt("indepYear"), resultTC3.getInt("population"),
+                        resultTC3.getInt("lifeExpectancy"), resultTC3.getInt("gnp"), resultTC3.getInt("gnpOld"),
+                        resultTC3.getString("localName"), resultTC3.getString("governmentForm"), resultTC3.getString("headOfState"), resultTC3.getInt("capital"), resultTC3.getString("code2"));
+                reportTC3.add(countries);
+            }
+            //Display the record
+            return reportTC3;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to The top N populated capital cities in a region where N is provided by the user. \n\n");
+            return null;
+        }
+    }
+
+}
+
+
 
 }
