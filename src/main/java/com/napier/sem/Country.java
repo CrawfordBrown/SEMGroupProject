@@ -4,21 +4,21 @@ package com.napier.sem;
  * Represents an City
  */
 public class Country {
-    private String code;
-    private String name;
-    private String continent;
-    private String region;
-    private Integer surfaceArea;
-    private Integer indepYear;
-    private Integer population;
-    private Integer lifeExpectancy;
-    private Integer gnp;
-    private Integer gnpOld;
-    private String localName;
-    private String governmentForm;
-    private String headOfState;
-    private Integer capital;
-    private String code2;
+    public String code;
+    public String name;
+    public String continent;
+    public String region;
+    public Integer surfaceArea;
+    public Integer indepYear;
+    public Integer population;
+    public Integer lifeExpectancy;
+    public Integer gnp;
+    public Integer gnpOld;
+    public String localName;
+    public String governmentForm;
+    public String headOfState;
+    public Integer capital;
+    public String code2;
 
     public Country(String code, String name, String continent, String region, Integer surfaceArea, Integer indepYear, Integer population, Integer lifeExpectancy, Integer gnp, Integer gnpOld, String localName, String governmentForm, String headOfState, Integer capital, String code2) {
         this.code = code;
@@ -179,3 +179,6 @@ public class Country {
                 '}';
     }
 }
+
+
+
