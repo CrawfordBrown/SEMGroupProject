@@ -22,7 +22,7 @@ public class City {
         return id;
     }
 
-    public void setID(String code) {
+    public void setID(Integer id) {
         this.id = id;
     }
 
