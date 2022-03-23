@@ -1,7 +1,9 @@
 package com.napier.sem;
 
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class CountryTest {
 
     Country myCountry = new Country(
@@ -21,125 +23,125 @@ public class CountryTest {
             3068,
             "DE");
 
-   @Test
+    @Test
     void canGetCountryCode() {
         assertEquals("DEU", myCountry.getCode()
-);
+        );
     }
 
     @Test
     void canSetCountryCode() {
-       myCountry.setCode("GER");
-       assertEquals("GER", myCountry.getCode());
+        myCountry.setCode("GER");
+        assertEquals("GER", myCountry.getCode());
     }
 
     @Test
     void canGetCountryName() {
         assertEquals("Germany", myCountry.getName()
-);
+        );
     }
 
     @Test
     void canSetCountryName() {
-       myCountry.setName("Scotland");
-       assertEquals("Scotland", myCountry.getName());
+        myCountry.setName("Scotland");
+        assertEquals("Scotland", myCountry.getName());
     }
 
     @Test
     void canGetCountryContinent() {
         assertEquals("Europe", myCountry.getContinent()
-);
+        );
     }
 
     @Test
     void canSetCountryContinent() {
-       myCountry.setContinent("Asia");
-       assertEquals("Asia", myCountry.getContinent());
+        myCountry.setContinent("Asia");
+        assertEquals("Asia", myCountry.getContinent());
     }
 
     @Test
     void canGetCountryRegion() {
         assertEquals("Western Europe", myCountry.getRegion()
-);
+        );
     }
 
     @Test
     void canSetCountryRegion() {
-       myCountry.setRegion("South East Asia");
-       assertEquals("South East Asia", myCountry.getRegion());
+        myCountry.setRegion("South East Asia");
+        assertEquals("South East Asia", myCountry.getRegion());
     }
 
 
     @Test
     void canGetCountrySurfaceArea() {
         assertEquals(357022, myCountry.getSurfaceArea()
-);
+        );
     }
 
     @Test
     void canSetCountrySurfaceArea() {
-       myCountry.setSurfaceArea(500000);
-       assertEquals(500000, myCountry.getSurfaceArea());
+        myCountry.setSurfaceArea(500000);
+        assertEquals(500000, myCountry.getSurfaceArea());
     }
 
     @Test
     void canGetCountryIndepYear() {
         assertEquals(1955, myCountry.getIndepYear()
-);
+        );
     }
 
     @Test
     void canSetCountryIndepYear() {
-       myCountry.setIndepYear(1980);
-       assertEquals(1980, myCountry.getIndepYear());
+        myCountry.setIndepYear(1980);
+        assertEquals(1980, myCountry.getIndepYear());
     }
 
     @Test
     void canGetCountryPopulation() {
         assertEquals(82164700, myCountry.getPopulation()
-);
+        );
     }
 
     @Test
     void canSetCountryPopulation() {
-       myCountry.setPopulation(821647222);
-       assertEquals(821647222, myCountry.getPopulation());
+        myCountry.setPopulation(821647222);
+        assertEquals(821647222, myCountry.getPopulation());
     }
 
     @Test
     void canGetCountryLifeExpectancy() {
         assertEquals(77, myCountry.getLifeExpectancy()
-);
+        );
     }
 
     @Test
     void canSetCountryLifeExpectancy() {
-       myCountry.setLifeExpectancy(90);
-       assertEquals(90, myCountry.getLifeExpectancy());
+        myCountry.setLifeExpectancy(90);
+        assertEquals(90, myCountry.getLifeExpectancy());
     }
 
     @Test
     void canGetCountryGNP() {
         assertEquals(2133367, myCountry.getGnp()
-);
+        );
     }
 
     @Test
     void canSetCountryGNP() {
-       myCountry.setGnp(55555);
-       assertEquals(55555, myCountry.getGnp());
+        myCountry.setGnp(55555);
+        assertEquals(55555, myCountry.getGnp());
     }
 
     @Test
     void canGetCountryOldGNP() {
         assertEquals(2102826, myCountry.getGnpOld()
-);
+        );
     }
 
     @Test
     void canSetCountryOldGNP() {
-       myCountry.setGnpOld(55555);
-       assertEquals(55555, myCountry.getGnpOld());
+        myCountry.setGnpOld(55555);
+        assertEquals(55555, myCountry.getGnpOld());
     }
 //  String headOfState, Integer capital, String code2
 
