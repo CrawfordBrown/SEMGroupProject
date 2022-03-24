@@ -2,6 +2,11 @@ package com.napier.sem;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * JUnit testing of City class
+ */
+
 public class CityTest {
 
     City myCity = new City(
@@ -11,6 +16,7 @@ public class CityTest {
             "Berliini",
             3386667);
 
+    //Testing the getter and setter of the ID parameter
     @Test
     void canGetCityID() {
         assertEquals(3068, myCity.getId());
@@ -22,6 +28,7 @@ public class CityTest {
         assertEquals(3069, myCity.getId());
     }
 
+    //Testing the getter and setter of the Name parameter
     @Test
     void canGetCityName(){
         assertEquals("Berlin", myCity.getName());
@@ -33,6 +40,7 @@ public class CityTest {
         assertEquals("BerlinB",myCity.getName());
     }
 
+    //Testing the getter and setter of Country Code parameter
     @Test
     void canGetCountryCode(){
         assertEquals("DEU", myCity.getCountryCode());
@@ -44,6 +52,7 @@ public class CityTest {
         assertEquals("DEUD", myCity.getCountryCode());
     }
 
+    //Testing the getter and setter of District parameter
     @Test
     void canGetDistrict(){
         assertEquals("Berliini", myCity.getDistrict());
@@ -55,6 +64,7 @@ public class CityTest {
         assertEquals("BerliiniB", myCity.getDistrict());
     }
 
+    //Testing the getter and setter of the Population parameter
     @Test
     void canGetPopulation(){
         assertEquals(3386667, myCity.getPopulation());
