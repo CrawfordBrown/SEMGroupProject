@@ -848,7 +848,6 @@ public class App
         ArrayList<City> getCities = a.getCities();
         printCities(getCities);
 
-        /*
         // Display the Records
 
         a.countriesInWorldLargestToSmallest();
@@ -874,7 +873,6 @@ public class App
         a.CitiesInDistrictLargestToSmallest("'Buenos Aires'");
 
 
-         */
         // Disconnect from database
         a.disconnect();
     }
