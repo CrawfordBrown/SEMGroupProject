@@ -34,8 +34,42 @@ public class AppTest
                 "Johannes Rau",
                 3068,
                 "DE");
+
         countries.add(myCountry);
         app.printCountries(countries);
+
+    }
+
+    @Test
+    void printCitiesNull(){
+        app.printCities(null);
+    }
+
+    @Test
+    void printCitiesNullMember() {
+        ArrayList<City> cityHasNull = new ArrayList<>();
+        cityHasNull.add(null);
+    }
+
+    @Test
+    void printCitiesEmpty(){
+        ArrayList<City> emptyCity = new ArrayList<>();
+        app.printCities(emptyCity);
+    }
+
+    @Test
+    void printCitiesWithValues(){
+        ArrayList<City> cities = new ArrayList<>();
+
+        City myCity = new City(
+                3068,
+                "Berlin",
+                "DEU",
+                "Berliini",
+                3386667);
+
+        cities.add(myCity);
+        app.printCities(cities);
     }
 
    

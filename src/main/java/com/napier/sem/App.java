@@ -85,7 +85,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-5s %-50s %-20s %-35s %-20s %-20s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.println(String.format("%-5s %-35s %-20s %-25s %-15s %-35s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all countries in the list
         for (Country country : countries)
         {
@@ -93,7 +93,27 @@ public class App
             {
                 continue;
             }
-            System.out.println(String.format("%-5s %-50s %-20s %-35s %-20s %-20s", country.code, country.name, country.continent, country.region, country.population, country.capital));
+            System.out.println(String.format("%-5s %-35s %-20s %-25s %-15s %-35s", country.code, country.name, country.continent, country.region, country.population, country.capital));
+        }
+    }
+
+    public static void printCities(ArrayList<City> cities)
+    {
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-7s %-35s %-35s %-25s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+        // Loop over all countries in the list
+        for (City city : cities)
+        {
+            if (city == null)
+            {
+                continue;
+            }
+            System.out.println(String.format("%-7s %-35s %-35s %-25s %-15s", city.getId(), city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation()));
         }
     }
 
@@ -415,7 +435,7 @@ public class App
 
 
 
-    private void report5() {
+    public ArrayList<City> citiesInWorldLargestToSmallest() {
 
         System.out.println("All the cities in the world organised by largest population to smallest.");
         StringBuilder sb = new StringBuilder();
@@ -428,6 +448,8 @@ public class App
             ResultSet rset5 = stmt.executeQuery(sql5);
             // Return new cities if valid.
             // Check one is returned
+
+            ArrayList<City> report5 = new ArrayList<City>();
             while (rset5.next()) {
 
                 Integer id = rset5.getInt("id");
@@ -437,14 +459,16 @@ public class App
                 Integer population = rset5.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
                 sb.append(city.toString() + "\r\n");
+                report5.add(city);
             }
             // Displays the records
+            return report5;
 
-            System.out.println(sb.toString());
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
-            return;
+            return null;
         }
 
     }
