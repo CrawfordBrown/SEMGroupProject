@@ -383,7 +383,6 @@ public class App
     }
 
 
-
     public ArrayList<City> CitiesInTheWorldLargestPopulationToSmallest() {
 
         System.out.println("All the cities in the world organised by largest population to smallest.");
@@ -705,7 +704,7 @@ public class App
 
     }
 
-    public ArrayList<Country> getCountry(String countryname){
+    public ArrayList<Country> getCountry(){
 
         StringBuilder sb  = new StringBuilder();
         try {
@@ -748,7 +747,7 @@ public class App
         }
     }
 
-    public ArrayList<City> getCities(String cityname) {
+    public ArrayList<City> getCities() {
 
         StringBuilder sb = new StringBuilder();
         try {
@@ -783,6 +782,26 @@ public class App
 
     }
 
+    public static void printCities(ArrayList<City> cities)
+    {
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-35s %-20s", "Name", "Country", "District", "Population"));
+        // Loop over all countries in the list
+        for (City city : cities)
+        {
+            if (city == null)
+            {
+                continue;
+            }
+            System.out.println(String.format("%-30s %-30s %-35s %-20s", city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation()));
+        }
+    }
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -797,34 +816,38 @@ public class App
 
         // ---------------------------------------------------------
 
-        a.getCountry("Spain");
+        a.getCountry();
 
-        ArrayList<City> getCities = a.getCities("Bombay");
+        ArrayList<City> getCities = a.getCities();
+        printCities(getCities);
 
+        /*
         // Display the Records
 
-          a.countriesInWorldLargestToSmallest();
-//        a.countriesInContinentLargestToSmallest("'Asia'");
-//        a.countriesInRegionLargestToSmallest("'Caribbean'");
-//        a.TopPopulatedCountriesInWorld(5);
-      //  a.TopPopulatedCountriesInContinent(5, "'Asia'");
-       // a.TopPopulatedCountriesInRegion(3, "'Caribbean'");
+        a.countriesInWorldLargestToSmallest();
+        a.countriesInContinentLargestToSmallest("'Asia'");
+        a.countriesInRegionLargestToSmallest("'Caribbean'");
+        a.TopPopulatedCountriesInWorld(5);
+        a.TopPopulatedCountriesInContinent(5, "'Asia'");
+        a.TopPopulatedCountriesInRegion(3, "'Caribbean'");
 
         // Display all the cities in the world organised by largest population to smallest.
-//        a.CitiesInTheWorldLargestPopulationToSmallest();
-//
-//        // Display all the cities in a continent organised by largest population to smallest.
-//        a.report6("'Europe'");
-//
-//        // Display all the cities in a region organised by largest population to smallest.
-//        a.report7("'Middle East'");
-//
-//        // Display All the cities in a country organised by largest population to smallest.
-//        a.report8("'Netherlands'");
-//
-//        // Display All the cities in a district organised by largest population to smallest.
-//        a.report9("'Buenos Aires'");
+        a.CitiesInTheWorldLargestPopulationToSmallest();
 
+        // Display all the cities in a continent organised by largest population to smallest.
+        a.CitiesInContinentLargestToSmallest("'Europe'");
+
+        // Display all the cities in a region organised by largest population to smallest.
+        a.CitiesInRegionLargestToSmallest("'Middle East'");
+
+        // Display All the cities in a country organised by largest population to smallest.
+        a.CitiesInCountryLargestToSmallest("'Netherlands'");
+
+        // Display All the cities in a district organised by largest population to smallest.
+        a.CitiesInDistrictLargestToSmallest("'Buenos Aires'");
+
+
+         */
         // Disconnect from database
         a.disconnect();
     }
