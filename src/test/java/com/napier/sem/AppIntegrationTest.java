@@ -12,6 +12,7 @@ public class AppIntegrationTest {
 
     static App app;
 
+    // Checks if the database connects
     @BeforeAll
     static void init() {
         app = new App();
