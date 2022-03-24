@@ -14,8 +14,32 @@ public class AppTest
     {
         app = new App();
     }
+
     @Test
-    void printCountries() {
+    void printCountriesTestNull()
+    {
+        app.printCountries(null);
+    }
+
+
+
+    @Test
+    void testPrintCountriesEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<>();
+        app.printCountries(countries);
+    }
+
+    @Test
+    void testPrintCountriesContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<>();
+        countries.add(null);
+        app.printCountries(countries);
+    }
+
+    @Test
+    void testPrintCountries() {
         ArrayList<Country> countries = new ArrayList<>();
 
         Country myCountry = new Country(
@@ -37,7 +61,6 @@ public class AppTest
         countries.add(myCountry);
         app.printCountries(countries);
     }
-
    
 
 }
