@@ -11,6 +11,7 @@ public class CityTest {
             "Berliini",
             3386667);
 
+
     @Test
     void canGetCityID() {
         assertEquals(3068, myCity.getId());
@@ -18,7 +19,7 @@ public class CityTest {
 
     @Test
     void canSetCityID() {
-        myCity.setID("3069");
+        myCity.setID(3069);
         assertEquals(3069, myCity.getId());
     }
 
@@ -55,6 +56,7 @@ public class CityTest {
         assertEquals("BerliiniB", myCity.getDistrict());
     }
 
+
     @Test
     void canGetPopulation(){
         assertEquals(3386667, myCity.getPopulation());
@@ -65,4 +67,6 @@ public class CityTest {
         myCity.setPopulation(3386969);
         assertEquals(3386969, myCity.getPopulation());
     }
+
+
 }

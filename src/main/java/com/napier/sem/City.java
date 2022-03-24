@@ -4,13 +4,13 @@ package com.napier.sem;
  * Represents an City
  */
 public class City {
-    private Integer id;
+    private int id;
     private String name;
     private String countryCode;
     private String district;
-    private Integer population;
+    private int population;
 
-    public City(int id, String name, String countryCode, String district, Integer population) {
+    public City(int id, String name, String countryCode, String district, int population) {
         this.id = id;
         this.name = name;
         this.countryCode = countryCode;
@@ -18,11 +18,11 @@ public class City {
         this.population = population;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setID(String code) {
+    public void setID(int id) {
         this.id = id;
     }
 
@@ -50,11 +50,11 @@ public class City {
         this.district = district;
     }
 
-    public Integer getPopulation() {
+    public int getPopulation() {
         return population;
     }
 
-    public void setPopulation(Integer population) {
+    public void setPopulation(int population) {
         this.population = population;
     }
 
