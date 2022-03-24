@@ -8,20 +8,20 @@ public class Country {
     private String name;
     private String continent;
     private String region;
-    private Integer surfaceArea;
-    private Integer indepYear;
-    private Integer population;
-    private Integer lifeExpectancy;
-    private Integer gnp;
-    private Integer gnpOld;
+    private int surfaceArea;
+    private int indepYear;
+    private int population;
+    private int lifeExpectancy;
+    private int gnp;
+    private int gnpOld;
     private String localName;
     private String governmentForm;
     private String headOfState;
-    private Integer capital;
+    private int capital;
     private String code2;
 
 
-    public Country(String code, String name, String continent, String region, Integer surfaceArea, Integer indepYear, Integer population, Integer lifeExpectancy, Integer gnp, Integer gnpOld, String localName, String governmentForm, String headOfState, Integer capital, String code2) {
+    public Country(String code, String name, String continent, String region, int surfaceArea, int indepYear, int population, int lifeExpectancy, int gnp, int gnpOld, String localName, String governmentForm, String headOfState, int capital, String code2) {
         this.code = code;
         this.name = name;
         this.continent = continent;
@@ -71,51 +71,51 @@ public class Country {
         this.region = region;
     }
 
-    public Integer getSurfaceArea() {
+    public int getSurfaceArea() {
         return surfaceArea;
     }
 
-    public void setSurfaceArea(Integer surfaceArea) {
+    public void setSurfaceArea(int surfaceArea) {
         this.surfaceArea = surfaceArea;
     }
 
-    public Integer getIndepYear() {
+    public int getIndepYear() {
         return indepYear;
     }
 
-    public void setIndepYear(Integer indepYear) {
+    public void setIndepYear(int indepYear) {
         this.indepYear = indepYear;
     }
 
-    public Integer getPopulation() {
+    public int getPopulation() {
         return population;
     }
 
-    public void setPopulation(Integer population) {
+    public void setPopulation(int population) {
         this.population = population;
     }
 
-    public Integer getLifeExpectancy() {
+    public int getLifeExpectancy() {
         return lifeExpectancy;
     }
 
-    public void setLifeExpectancy(Integer lifeExpectancy) {
+    public void setLifeExpectancy(int lifeExpectancy) {
         this.lifeExpectancy = lifeExpectancy;
     }
 
-    public Integer getGnp() {
+    public int getGnp() {
         return gnp;
     }
 
-    public void setGnp(Integer gnp) {
+    public void setGnp(int gnp) {
         this.gnp = gnp;
     }
 
-    public Integer getGnpOld() {
+    public int getGnpOld() {
         return gnpOld;
     }
 
-    public void setGnpOld(Integer gnpOld) {
+    public void setGnpOld(int gnpOld) {
         this.gnpOld = gnpOld;
     }
 
@@ -143,11 +143,11 @@ public class Country {
         this.headOfState = headOfState;
     }
 
-    public Integer getCapital() {
+    public int getCapital() {
         return capital;
     }
 
-    public void setCapital(Integer capital) {
+    public void setCapital(int capital) {
         this.capital = capital;
     }
 
@@ -180,3 +180,6 @@ public class Country {
                 '}';
     }
 }
+
+
+
