@@ -802,6 +802,30 @@ public class App
         }
     }
 
+    public static void printCountries(ArrayList<Country> countries)
+    {
+        if (countries == null)
+        {
+            System.out.println("No countries");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-5s %-50s %-20s %-35s %-20s %-20s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        // Loop over all countries in the list
+        for (Country country : countries)
+        {
+            if (country == null)
+            {
+                continue;
+            }
+            System.out.println(String.format("%-5s %-50s %-20s %-35s %-20s %-20s", country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital()));
+        }
+    }
+
+    /*
+    All the countries in the world organised by largest population to smallest
+     */
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -817,6 +841,9 @@ public class App
         // ---------------------------------------------------------
 
         a.getCountry();
+
+        ArrayList<Country> getCountries = a.getCountry();
+        printCountries(getCountries);
 
         ArrayList<City> getCities = a.getCities();
         printCities(getCities);
