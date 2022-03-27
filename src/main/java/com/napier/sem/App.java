@@ -755,8 +755,7 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String sql12 = "SELECT * \n"+
-                    "FROM city\n" +
-                    "WHERE ;";
+                    "FROM city\n;";
 
             // Execute SQL statement
             ResultSet rset12 = stmt.executeQuery(sql12);

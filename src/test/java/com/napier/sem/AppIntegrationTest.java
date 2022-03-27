@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,6 +34,12 @@ public class AppIntegrationTest {
         assertEquals(city.getPopulation(), 7285000);
         assertEquals(city.getDistrict(),"England");
 
+    }
+
+    @Test
+    void testGetALLCities(){
+        List<City> cities = app.getCities();
+        assertEquals(cities.size(), 4079);
     }
 
 }
