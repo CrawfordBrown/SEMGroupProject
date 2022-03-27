@@ -7,4 +7,4 @@
 
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/CrawfordBrown/SEMGroupProject/ A workflow for group work project/Develop?style=flat-square)
 
-[![codecov](https://codecov.io/gh/DylanFdes/CoursworkGroupWork/branch/master/graph/badge.svg?token=MNZBTXYGT0)](https://codecov.io/gh/DylanFdes/CoursworkGroupWork)
+[![codecov](https://codecov.io/gh/CrawfordBrown/SEMGroupProject/branch/main/graph/badge.svg?token=MNZBTXYGT0)](https://codecov.io/gh/CrawfordBrown/SEMGroupProject)
