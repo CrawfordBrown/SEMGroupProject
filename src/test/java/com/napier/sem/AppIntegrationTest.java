@@ -26,12 +26,12 @@ public class AppIntegrationTest {
         assertEquals(country.getPopulation(), 22720000);
     }
 
-
-
     @Test
     void testGetCity() {
-        City city = app.getCities().get(0);
-        assertEquals(city.getName(), "Kabul");
+        City city = app.getCity("London");
+        assertEquals(city.getCountryCode(), "GBR");
+        assertEquals(city.getPopulation(), 7285000);
+        assertEquals(city.getDistrict(),"England");
 
     }
 

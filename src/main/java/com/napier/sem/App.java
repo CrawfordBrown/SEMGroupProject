@@ -755,7 +755,8 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String sql12 = "SELECT * \n"+
-                    "FROM city\n;";
+                    "FROM city\n" +
+                    "WHERE ;";
 
             // Execute SQL statement
             ResultSet rset12 = stmt.executeQuery(sql12);
@@ -774,6 +775,44 @@ public class App
             }
             // Displays the records
             return getCities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+
+    }
+
+
+    public City getCity(String Cname) {
+
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql13 = "SELECT * \n"+
+                    "FROM city\n" +
+                    "WHERE city.Name = '"+Cname+"';";
+
+            // Execute SQL statement
+            ResultSet rset13 = stmt.executeQuery(sql13);
+            // Return new cities if valid.
+            // Check one is returned
+
+            if (rset13.next())
+            {
+                Integer id = rset13.getInt("id");
+                String name = rset13.getString("name");
+                String countryCode = rset13.getString("countryCode");
+                String district = rset13.getString("district");
+                Integer population = rset13.getInt("population");
+                City city = new City(id, name, countryCode, district, population);
+                return city;
+            }
+            else
+                return null;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
