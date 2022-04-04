@@ -704,20 +704,21 @@ public class App
 
     }
 
-    public ArrayList<Country> getCountry(){
+    public Country getCountry(String CName){
 
         StringBuilder sb  = new StringBuilder();
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String sql = "select * from country ;";
+            String sql = "select * \n" +
+                    "from country\n " +
+                    "WHERE country.Name = '"+CName+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(sql);
             // Return new country if valid.
             // Check one is returned
-            ArrayList<Country> getCountries = new ArrayList<Country>();
-            while (rset.next()) {
+            if (rset.next()) {
                 String code = rset.getString("code"); //MAKE SURE THIS WORKS, RANDOM
                 String name = rset.getString("name");
                 String continent = rset.getString("continent");
@@ -735,10 +736,11 @@ public class App
                 String code2 = rset.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                getCountries.add(country);
+                return country;
 
             }
-            return getCountries;
+            else
+                return null;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -854,7 +856,6 @@ public class App
 
         // ---------------------------------------------------------
 
-        a.getCountry();
 
         ArrayList<City> getCities = a.getCities();
         printCities(getCities);

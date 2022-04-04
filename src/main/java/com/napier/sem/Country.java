@@ -107,7 +107,7 @@ public class Country {
         return gnp;
     }
 
-    public void setGnp(int gnp) {
+    public void setGnp( int gnp) {
         this.gnp = gnp;
     }
 
@@ -115,7 +115,7 @@ public class Country {
         return gnpOld;
     }
 
-    public void setGnpOld(int gnpOld) {
+    public void setGnpOld( int gnpOld) {
         this.gnpOld = gnpOld;
     }
 
