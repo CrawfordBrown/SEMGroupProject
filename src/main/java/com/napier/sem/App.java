@@ -840,21 +840,42 @@ public class App
         }
     }
 
-    public ArrayList<Country> populationRank(){
+    public ArrayList<Country> populationRank(String populationName, int num){
 
         StringBuilder sb  = new StringBuilder();
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String sql = "select * from country order by Population desc;";
+            String worldPopulation = "select * from country order by Population desc;";
+            String continentPopulation = "select * " +
+                    "from country " +
+                    "where continent = " + populationName +
+                    "order by Population desc;";
+            String regionPopulation = "select * " +
+                    "from country " +
+                    "where region = " + populationName +
+                    "order by Population desc;";;
+                    
+            ResultSet rset = null;        
+                    
+            if(num == 1)
+            {
+                rset = stmt.executeQuery(worldPopulation);
+            }
+            else if (num == 2)
+            {
+                rset = stmt.executeQuery(continentPopulation);
+            }
+            else if (num == 3)
+            {
+                rset = stmt.executeQuery(regionPopulation);
+            }
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(sql);
+
             // Return new country if valid.
             // Check one is returned
-
-            ArrayList<Country> report1 = new ArrayList<Country>();
-
+            ArrayList<Country> populationRank = new ArrayList<Country>();
             while (rset.next()) {
                 String code = rset.getString("code");
                 String name = rset.getString("name");
@@ -873,16 +894,41 @@ public class App
                 String code2 = rset.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                report1.add(country);
+                populationRank.add(country);
             }
             // Displays the records
-            return report1;
+            return populationRank;
 
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
             return null;
+        }
+    }
+
+
+    public void printCountries(ArrayList<Country> Countries)
+    {
+        // Check countries is not null
+        if (Countries == null)
+        {
+            System.out.println("No countries");
+            return;
+        }
+
+        // Print header
+        String format = String.format("%-40s %-40s %-40s %-40s %-40s %-40s", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.println(format);
+        // Loop over all countries in the list
+        for (Country country : Countries)
+        {
+            if (country == null)
+                continue;
+            String cnt_string =
+                    String.format("%-40s %-40s %-40s %-40s %-40s %-40s",
+                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
+            System.out.println(cnt_string);
         }
     }
 
@@ -902,8 +948,11 @@ public class App
 
         a.getCountry();
 
+        ArrayList<Country> populationRank = a.populationRank("'Europe'", 2);
+        a.printCountries(populationRank);
+
         ArrayList<City> getCities = a.getCities();
-        printCities(getCities);
+        //printCities(getCities);
 
         /*
         // Display the Records
