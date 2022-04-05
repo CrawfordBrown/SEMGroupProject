@@ -20,7 +20,6 @@ public class AppIntegrationTest {
 
     }
 
-
     @Test
     void testGetCountry() {
         Country country = app.getCountry().get(1);
