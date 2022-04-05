@@ -93,16 +93,16 @@ public class App
                 String name = rset.getString("name");
                 String continent = rset.getString("continent");
                 String region = rset.getString("region");
-                Integer surfaceArea = rset.getInt("surfaceArea");
-                Integer indepYear = rset.getInt("indepYear");
-                Integer population = rset.getInt("population");
-                Integer lifeExpectancy = rset.getInt("lifeExpectancy");
-                Integer gnp = rset.getInt("gnp");
-                Integer gnpOld = rset.getInt("gnpOld");
+                int surfaceArea = rset.getInt("surfaceArea");
+                int indepYear = rset.getInt("indepYear");
+                int population = rset.getInt("population");
+                int lifeExpectancy = rset.getInt("lifeExpectancy");
+                int gnp = rset.getInt("gnp");
+                int gnpOld = rset.getInt("gnpOld");
                 String localName = rset.getString("localName");
                 String governmentForm = rset.getString("governmentForm");
                 String headOfState = rset.getString("headOfState");
-                Integer capital = rset.getInt("capital");
+                int capital = rset.getInt("capital");
                 String code2 = rset.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
@@ -151,16 +151,16 @@ public class App
                 String name = rset2.getString("name");
                 String continent = rset2.getString("continent");
                 String region = rset2.getString("region");
-                Integer surfaceArea = rset2.getInt("surfaceArea");
-                Integer indepYear = rset2.getInt("indepYear");
-                Integer population = rset2.getInt("population");
-                Integer lifeExpectancy = rset2.getInt("lifeExpectancy");
-                Integer gnp = rset2.getInt("gnp");
-                Integer gnpOld = rset2.getInt("gnpOld");
+                int surfaceArea = rset2.getInt("surfaceArea");
+                int indepYear = rset2.getInt("indepYear");
+                int population = rset2.getInt("population");
+                int lifeExpectancy = rset2.getInt("lifeExpectancy");
+                int gnp = rset2.getInt("gnp");
+                int gnpOld = rset2.getInt("gnpOld");
                 String localName = rset2.getString("localName");
                 String governmentForm = rset2.getString("governmentForm");
                 String headOfState = rset2.getString("headOfState");
-                Integer capital = rset2.getInt("capital");
+                int capital = rset2.getInt("capital");
                 String code2 = rset2.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
@@ -204,16 +204,16 @@ public class App
                 String name = rset3.getString("name");
                 String continent = rset3.getString("continent");
                 String region = rset3.getString("region");
-                Integer surfaceArea = rset3.getInt("surfaceArea");
-                Integer indepYear = rset3.getInt("indepYear");
-                Integer population = rset3.getInt("population");
-                Integer lifeExpectancy = rset3.getInt("lifeExpectancy");
-                Integer gnp = rset3.getInt("gnp");
-                Integer gnpOld = rset3.getInt("gnpOld");
+                int surfaceArea = rset3.getInt("surfaceArea");
+                int indepYear = rset3.getInt("indepYear");
+                int population = rset3.getInt("population");
+                int lifeExpectancy = rset3.getInt("lifeExpectancy");
+                int gnp = rset3.getInt("gnp");
+                int gnpOld = rset3.getInt("gnpOld");
                 String localName = rset3.getString("localName");
                 String governmentForm = rset3.getString("governmentForm");
                 String headOfState = rset3.getString("headOfState");
-                Integer capital = rset3.getInt("capital");
+                int capital = rset3.getInt("capital");
                 String code2 = rset3.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
@@ -254,16 +254,16 @@ public class App
                 String name = rset4.getString("name");
                 String continent = rset4.getString("continent");
                 String region = rset4.getString("region");
-                Integer surfaceArea = rset4.getInt("surfaceArea");
-                Integer indepYear = rset4.getInt("indepYear");
-                Integer population = rset4.getInt("population");
-                Integer lifeExpectancy = rset4.getInt("lifeExpectancy");
-                Integer gnp = rset4.getInt("gnp");
-                Integer gnpOld = rset4.getInt("gnpOld");
+                int surfaceArea = rset4.getInt("surfaceArea");
+                int indepYear = rset4.getInt("indepYear");
+                int population = rset4.getInt("population");
+                int lifeExpectancy = rset4.getInt("lifeExpectancy");
+                int gnp = rset4.getInt("gnp");
+                int gnpOld = rset4.getInt("gnpOld");
                 String localName = rset4.getString("localName");
                 String governmentForm = rset4.getString("governmentForm");
                 String headOfState = rset4.getString("headOfState");
-                Integer capital = rset4.getInt("capital");
+                int capital = rset4.getInt("capital");
                 String code2 = rset4.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
@@ -305,16 +305,16 @@ public class App
                 String name = rset4.getString("name");
                 String continent = rset4.getString("continent");
                 String region = rset4.getString("region");
-                Integer surfaceArea = rset4.getInt("surfaceArea");
-                Integer indepYear = rset4.getInt("indepYear");
-                Integer population = rset4.getInt("population");
-                Integer lifeExpectancy = rset4.getInt("lifeExpectancy");
-                Integer gnp = rset4.getInt("gnp");
-                Integer gnpOld = rset4.getInt("gnpOld");
+                int surfaceArea = rset4.getInt("surfaceArea");
+                int indepYear = rset4.getInt("indepYear");
+                int population = rset4.getInt("population");
+                int lifeExpectancy = rset4.getInt("lifeExpectancy");
+                int gnp = rset4.getInt("gnp");
+                int gnpOld = rset4.getInt("gnpOld");
                 String localName = rset4.getString("localName");
                 String governmentForm = rset4.getString("governmentForm");
                 String headOfState = rset4.getString("headOfState");
-                Integer capital = rset4.getInt("capital");
+                int capital = rset4.getInt("capital");
                 String code2 = rset4.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
@@ -356,16 +356,16 @@ public class App
                 String name = rset4.getString("name");
                 String continent = rset4.getString("continent");
                 String region = rset4.getString("region");
-                Integer surfaceArea = rset4.getInt("surfaceArea");
-                Integer indepYear = rset4.getInt("indepYear");
-                Integer population = rset4.getInt("population");
-                Integer lifeExpectancy = rset4.getInt("lifeExpectancy");
-                Integer gnp = rset4.getInt("gnp");
-                Integer gnpOld = rset4.getInt("gnpOld");
+                int surfaceArea = rset4.getInt("surfaceArea");
+                int indepYear = rset4.getInt("indepYear");
+                int population = rset4.getInt("population");
+                int lifeExpectancy = rset4.getInt("lifeExpectancy");
+                int gnp = rset4.getInt("gnp");
+                int gnpOld = rset4.getInt("gnpOld");
                 String localName = rset4.getString("localName");
                 String governmentForm = rset4.getString("governmentForm");
                 String headOfState = rset4.getString("headOfState");
-                Integer capital = rset4.getInt("capital");
+                int capital = rset4.getInt("capital");
                 String code2 = rset4.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
@@ -448,11 +448,11 @@ public class App
             // Check one is returned
             ArrayList<City> report9 = new ArrayList<City>();
             while (rset.next()) {
-                Integer id = rset.getInt("id");
+                int id = rset.getInt("id");
                 String name = rset.getString("name");
                 String countryCode = rset.getString("countryCode");
                 String district = rset.getString("district");
-                Integer population = rset.getInt("population");
+                int population = rset.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
                 report9.add(city);
             }
@@ -540,11 +540,11 @@ public class App
             ArrayList<City> report10 = new ArrayList<City>();
 
             while (rset.next()) {
-                Integer id = rset.getInt("id");
+                int id = rset.getInt("id");
                 String name = rset.getString("name");
                 String countryCode = rset.getString("countryCode");
                 String district = rset.getString("district");
-                Integer population = rset.getInt("population");
+                int population = rset.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
                 report10.add(city);
             }
@@ -577,16 +577,16 @@ public class App
                 String name = rset.getString("name");
                 String continent = rset.getString("continent");
                 String region = rset.getString("region");
-                Integer surfaceArea = rset.getInt("surfaceArea");
-                Integer indepYear = rset.getInt("indepYear");
-                Integer population = rset.getInt("population");
-                Integer lifeExpectancy = rset.getInt("lifeExpectancy");
-                Integer gnp = rset.getInt("gnp");
-                Integer gnpOld = rset.getInt("gnpOld");
+                int surfaceArea = rset.getInt("surfaceArea");
+                int indepYear = rset.getInt("indepYear");
+                int population = rset.getInt("population");
+                int lifeExpectancy = rset.getInt("lifeExpectancy");
+                int gnp = rset.getInt("gnp");
+                int gnpOld = rset.getInt("gnpOld");
                 String localName = rset.getString("localName");
                 String governmentForm = rset.getString("governmentForm");
                 String headOfState = rset.getString("headOfState");
-                Integer capital = rset.getInt("capital");
+                int capital = rset.getInt("capital");
                 String code2 = rset.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
@@ -601,6 +601,52 @@ public class App
             System.out.println("Failed to get country details");
             return null;
         }
+    }
+
+    public ArrayList<Country> getCountries() {
+
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql12 = "SELECT * \n"+
+                    "FROM country\n;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(sql12);
+            // Return new cities if valid.
+            // Check one is returned
+            ArrayList<Country> getCountries = new ArrayList<Country>();
+
+            while (rset.next()) {
+                String code = rset.getString("code");
+                String name = rset.getString("name");
+                String continent = rset.getString("continent");
+                String region = rset.getString("region");
+                int surfaceArea = rset.getInt("surfaceArea");
+                int indepYear = rset.getInt("indepYear");
+                int population = rset.getInt("population");
+                int lifeExpectancy = rset.getInt("lifeExpectancy");
+                int gnp = rset.getInt("gnp");
+                int gnpOld = rset.getInt("gnpOld");
+                String localName = rset.getString("localName");
+                String governmentForm = rset.getString("governmentForm");
+                String headOfState = rset.getString("headOfState");
+                int capital = rset.getInt("capital");
+                String code2 = rset.getString("code2");
+                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                getCountries.add(country);
+            }
+            // Displays the records
+            return getCountries;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries details");
+            return null;
+        }
+
     }
 
     public ArrayList<City> getCities() {
@@ -620,11 +666,11 @@ public class App
             ArrayList<City> getCities = new ArrayList<City>();
 
             while (rset12.next()) {
-                Integer id = rset12.getInt("id");
+                int id = rset12.getInt("id");
                 String name = rset12.getString("name");
                 String countryCode = rset12.getString("countryCode");
                 String district = rset12.getString("district");
-                Integer population = rset12.getInt("population");
+                int population = rset12.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
                 getCities.add(city);
             }
@@ -651,17 +697,17 @@ public class App
                     "WHERE city.Name = '"+Cname+"';";
 
             // Execute SQL statement
-            ResultSet rset13 = stmt.executeQuery(sql13);
+            ResultSet rset = stmt.executeQuery(sql13);
             // Return new cities if valid.
             // Check one is returned
 
-            if (rset13.next())
+            if (rset.next())
             {
-                Integer id = rset13.getInt("id");
-                String name = rset13.getString("name");
-                String countryCode = rset13.getString("countryCode");
-                String district = rset13.getString("district");
-                Integer population = rset13.getInt("population");
+                int id = rset.getInt("id");
+                String name = rset.getString("name");
+                String countryCode = rset.getString("countryCode");
+                String district = rset.getString("district");
+                int population = rset.getInt("population");
                 City city = new City(id, name, countryCode, district, population);
                 return city;
             }
@@ -737,16 +783,16 @@ public class App
                 String name = rset.getString("name");
                 String continent = rset.getString("continent");
                 String region = rset.getString("region");
-                Integer surfaceArea = rset.getInt("surfaceArea");
-                Integer indepYear = rset.getInt("indepYear");
-                Integer population = rset.getInt("population");
-                Integer lifeExpectancy = rset.getInt("lifeExpectancy");
-                Integer gnp = rset.getInt("gnp");
-                Integer gnpOld = rset.getInt("gnpOld");
+                int surfaceArea = rset.getInt("surfaceArea");
+                int indepYear = rset.getInt("indepYear");
+                int population = rset.getInt("population");
+                int lifeExpectancy = rset.getInt("lifeExpectancy");
+                int gnp = rset.getInt("gnp");
+                int gnpOld = rset.getInt("gnpOld");
                 String localName = rset.getString("localName");
                 String governmentForm = rset.getString("governmentForm");
                 String headOfState = rset.getString("headOfState");
-                Integer capital = rset.getInt("capital");
+                int capital = rset.getInt("capital");
                 String code2 = rset.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
@@ -805,6 +851,8 @@ public class App
 
         ArrayList<Country> populationRank = a.populationRank("'Europe'", 2);
         a.printCountries(populationRank);
+        
+        ArrayList<Country> getCountries = a.getCountries();
 
         ArrayList<City> getCities = a.getCities();
         printCities(getCities);
