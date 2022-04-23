@@ -842,6 +842,52 @@ public class App
         }
     }
 
+    public ArrayList<Country> getCountries() {
+
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql12 = "SELECT * \n"+
+                    "FROM country\n;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(sql12);
+            // Return new cities if valid.
+            // Check one is returned
+            ArrayList<Country> getCountries = new ArrayList<Country>();
+
+            while (rset.next()) {
+                String code = rset.getString("code");
+                String name = rset.getString("name");
+                String continent = rset.getString("continent");
+                String region = rset.getString("region");
+                int surfaceArea = rset.getInt("surfaceArea");
+                int indepYear = rset.getInt("indepYear");
+                int population = rset.getInt("population");
+                int lifeExpectancy = rset.getInt("lifeExpectancy");
+                int gnp = rset.getInt("gnp");
+                int gnpOld = rset.getInt("gnpOld");
+                String localName = rset.getString("localName");
+                String governmentForm = rset.getString("governmentForm");
+                String headOfState = rset.getString("headOfState");
+                int capital = rset.getInt("capital");
+                String code2 = rset.getString("code2");
+                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                getCountries.add(country);
+            }
+            // Displays the records
+            return getCountries;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries details");
+            return null;
+        }
+
+    }
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -859,6 +905,9 @@ public class App
 
         ArrayList<City> getCities = a.getCities();
         printCities(getCities);
+
+        ArrayList<Country> getCountries = a.getCountries();
+
 
         /*
         // Display the Records

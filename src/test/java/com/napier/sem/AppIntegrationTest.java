@@ -57,4 +57,10 @@ public class AppIntegrationTest {
         assertEquals(cities.size(), 4079);
     }
 
+    @Test
+    void testGetAllCountries(){
+        List<Country> countries = app.getCountries();
+        assertEquals(countries.size(), 239);
+    }
+
 }
