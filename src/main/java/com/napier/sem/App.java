@@ -722,6 +722,43 @@ public class App
 
     }
 
+    public ArrayList<CountryLanguage> getCountryLanguages() {
+
+        StringBuilder sb = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sql = "SELECT * \n"+
+                    "FROM countrylanguage\n;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(sql);
+            // Return new cities if valid.
+            // Check one is returned
+
+            ArrayList<CountryLanguage> getCountryLanguages = new ArrayList<CountryLanguage>();
+
+
+            while (rset.next()) {
+                String code = rset.getString("CountryCode");
+                String language = rset.getString("Language");
+                String isOfficial = rset.getString("IsOfficial");
+                int percentage = rset.getInt("Percentage");
+                CountryLanguage countryLanguage = new CountryLanguage(code, language, isOfficial, percentage);
+                getCountryLanguages.add(countryLanguage);
+            }
+            // Displays the records
+            return getCountryLanguages;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+
+    }
+
+
     public static void printCities(ArrayList<City> cities)
     {
         if (cities == null)
@@ -856,6 +893,8 @@ public class App
 
         ArrayList<City> getCities = a.getCities();
         printCities(getCities);
+
+        ArrayList<CountryLanguage> getCountryLanguages = a.getCountryLanguages();
 
         ArrayList<City> CitiesPopulation = a.citiesPopulation("'Europe'", 2);
         printCities(CitiesPopulation);

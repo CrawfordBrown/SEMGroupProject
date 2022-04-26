@@ -71,12 +71,17 @@ public class AppIntegrationTest {
         assertEquals(cities.size(), 4079);
     }
 
+    @Test
+    void testGetCountryLanguages(){
+        List<CountryLanguage> languages = app.getCountryLanguages();
+        assertEquals(languages.size(), 984);
+    }
+
+
     @AfterAll
     static void close() {
         app.disconnect();
     }
-
-
 
 
 }
