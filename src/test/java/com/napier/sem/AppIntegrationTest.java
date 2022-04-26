@@ -1,5 +1,6 @@
 package com.napier.sem;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -41,6 +42,20 @@ public class AppIntegrationTest {
         assertEquals(country.getCode2(),"AE");
     }
 
+
+    @Test
+    void testGetAllCountries(){
+        List<Country> countries = app.getCountries();
+        assertEquals(countries.size(), 239);
+    }
+
+    @Test
+    void testGetCountryInContinent(){
+        Country country = app.countriesInContinentLargestToSmallest("'Asia'").get(1);
+        assertEquals(country.getName(), "India");
+    }
+
+
     // Testing City Class
     @Test
     void testGetCity() {
@@ -48,7 +63,6 @@ public class AppIntegrationTest {
         assertEquals(city.getCountryCode(), "GBR");
         assertEquals(city.getPopulation(), 7285000);
         assertEquals(city.getDistrict(),"England");
-
     }
 
     @Test
@@ -57,10 +71,12 @@ public class AppIntegrationTest {
         assertEquals(cities.size(), 4079);
     }
 
-    @Test
-    void testGetAllCountries(){
-        List<Country> countries = app.getCountries();
-        assertEquals(countries.size(), 239);
+    @AfterAll
+    static void close() {
+        app.disconnect();
     }
+
+
+
 
 }
