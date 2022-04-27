@@ -14,8 +14,32 @@ public class AppTest
     {
         app = new App();
     }
+
     @Test
-    void printCountries() {
+    void printCountriesTestNull()
+    {
+        app.printCountries(null);
+    }
+
+
+
+    @Test
+    void testPrintCountriesEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<>();
+        app.printCountries(countries);
+    }
+
+    @Test
+    void testPrintCountriesContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<>();
+        countries.add(null);
+        app.printCountries(countries);
+    }
+
+    @Test
+    void testPrintCountries() {
         ArrayList<Country> countries = new ArrayList<>();
 
         Country myCountry = new Country(
@@ -34,10 +58,43 @@ public class AppTest
                 "Johannes Rau",
                 3068,
                 "DE");
+
         countries.add(myCountry);
         app.printCountries(countries);
+
     }
 
+    @Test
+    void printCitiesNull(){
+        app.printCities(null);
+    }
+
+    @Test
+    void printCitiesNullMember() {
+        ArrayList<City> cityHasNull = new ArrayList<>();
+        cityHasNull.add(null);
+    }
+
+    @Test
+    void printCitiesEmpty(){
+        ArrayList<City> emptyCity = new ArrayList<>();
+        app.printCities(emptyCity);
+    }
+
+    @Test
+    void printCitiesWithValues(){
+        ArrayList<City> cities = new ArrayList<>();
+
+        City myCity = new City(
+                3068,
+                "Berlin",
+                "DEU",
+                "Berliini",
+                3386667);
+
+        cities.add(myCity);
+        app.printCities(cities);
+    }
    
 
 }
