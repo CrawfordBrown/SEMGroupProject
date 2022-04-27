@@ -5,6 +5,7 @@ on:
       - master
       - Develop
       - integration_tests
+      - sql_queries
       - DylanFdes
 
 jobs:
