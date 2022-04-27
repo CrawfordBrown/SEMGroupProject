@@ -392,7 +392,7 @@ public class App
  */
     public ArrayList<City> TopCities(int num, int limit) {
 
-        System.out.println("TopCities\n");
+        //System.out.println("TopCities\n");
         StringBuilder sb = new StringBuilder();
         try {
             // Create an SQL statement
@@ -766,26 +766,25 @@ public class App
 
         //System.out.println(String.format("%-30s %-30s %-35s %-20s", "Name", "Country", "District", "Population"));
         // Loop over all cities in the list
-        for (City city : cities)
-        {
-            if (city == null)
-            {
-                sb.append("| " + city.getName() + " | " +
-                        city.getCountryCode() + " | " + city.getDistrict() + " | " +
-                        city.getPopulation() + " |\r\n");
+        for (City city : cities) {
+            if (city == null) {
+                continue;
             }
-            try{
-                new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-                writer.write(sb.toString());
-                writer.close();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-            //System.out.println(String.format("%-30s %-30s %-35s %-20s", city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation()));
+            sb.append("| " + city.getName() + " | " +
+                    city.getCountryCode() + " | " + city.getDistrict() + " | " +
+                    city.getPopulation() + " |\r\n");
         }
-    }
+        try{
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+            //System.out.println(String.format("%-30s %-30s %-35s %-20s", city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation()));
 
+    }
 
     public void printCountries(ArrayList<Country> Countries, String filename)
     {
@@ -803,25 +802,26 @@ public class App
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
         // Loop over all countries in the list
-        for (Country country : Countries)
-        {
+        for (Country country : Countries) {
             if (country == null) {
-                sb.append("| " + country.getCode() + " | " +
-                        country.getName() + " | " +
-                        country.getContinent() + " | " +
-                        country.getRegion() + " | " +
-                        country.getPopulation() + " | " +
-                        country.getCapital() + "|\r\n");
+                continue;
             }
-            try{
-                new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-                writer.write(sb.toString());
-                writer.close();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+            sb.append("| " + country.getCode() + " | " +
+                    country.getName() + " | " +
+                    country.getContinent() + " | " +
+                    country.getRegion() + " | " +
+                    country.getPopulation() + " | " +
+                    country.getCapital() + "|\r\n");
         }
+        try{
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     public static void main(String[] args) {
@@ -871,7 +871,7 @@ public class App
         ArrayList<City> CitiesInRegion = a.citiesPopulation("'North America'",3);
         a.printCities(CitiesInRegion, "CitiesInRegion.md");
 
-        ArrayList<City> CitiesInCountry = a.citiesPopulation("'United America'",4);
+        ArrayList<City> CitiesInCountry = a.citiesPopulation("'United States'",4);
         a.printCities(CitiesInCountry, "CitiesInCountry.md");
 
         ArrayList<City> CitiesInDistrict = a.citiesPopulation("'California'",5);
