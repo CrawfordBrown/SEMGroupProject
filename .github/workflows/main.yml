@@ -6,6 +6,7 @@ on:
       - Develop
       - integration_tests
       - DylanFdes
+      - Tesolite
 
 jobs:
   UnitTests:
