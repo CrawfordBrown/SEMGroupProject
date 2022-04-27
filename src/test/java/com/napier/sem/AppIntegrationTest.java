@@ -32,7 +32,8 @@ public class AppIntegrationTest {
     void testGetCity() {
         City city = app.getCities().get(0);
         assertEquals(city.getName(), "Kabul");
-
     }
+
+
 
 }
