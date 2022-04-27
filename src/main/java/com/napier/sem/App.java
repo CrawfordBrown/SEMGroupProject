@@ -230,44 +230,67 @@ public class App
 
     }
 
-    //Top n populated countries in world
+    //TopPopulation
 
-    public ArrayList<Country> TopPopulatedCountriesInWorld(int num) {
+    public ArrayList<Country> TopPopulation(String populated_countries, int limit, int num) {
 
-        System.out.println("Top n populated countries in world");
+        System.out.println("TopPopulation\n");
         StringBuilder sb  = new StringBuilder();
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String sql4 = "select * " +
+            String TopPopulationWorld = "select * " +
                     "from country " +
-                    "Order By Population desc Limit " + num + ";";
-            // Execute SQL statement
-            ResultSet rset4 = stmt.executeQuery(sql4);
+                    "Order By Population desc Limit " + limit + ";";
+
+            String TopPopulationContinent = "select * " +
+                    "from country " +
+                    "where Continent = " + populated_countries +
+                    "Order By Population desc Limit " + limit + ";";
+
+            String TopPopulationRegion = "select * " +
+                    "from country " +
+                    "where Region = " + populated_countries +
+                    "Order By Population desc Limit " + limit + ";";
+
+            ResultSet rset = null;
+
+            if(num == 1)
+            {
+                rset = stmt.executeQuery(TopPopulationWorld);
+            }
+            else if (num == 2)
+            {
+                rset = stmt.executeQuery(TopPopulationContinent);
+            }
+            else if (num == 3)
+            {
+                rset = stmt.executeQuery(TopPopulationRegion);
+            }
+
             // Return new country if valid.
             // Check one is returned
             ArrayList<Country> report4 = new ArrayList<Country>();
 
-            while (rset4.next()) {
-                String code = rset4.getString("code");
-                String name = rset4.getString("name");
-                String continent = rset4.getString("continent");
-                String region = rset4.getString("region");
-                int surfaceArea = rset4.getInt("surfaceArea");
-                int indepYear = rset4.getInt("indepYear");
-                int population = rset4.getInt("population");
-                int lifeExpectancy = rset4.getInt("lifeExpectancy");
-                int gnp = rset4.getInt("gnp");
-                int gnpOld = rset4.getInt("gnpOld");
-                String localName = rset4.getString("localName");
-                String governmentForm = rset4.getString("governmentForm");
-                String headOfState = rset4.getString("headOfState");
-                int capital = rset4.getInt("capital");
-                String code2 = rset4.getString("code2");
+            while (rset.next()) {
+                String code = rset.getString("code");
+                String name = rset.getString("name");
+                String continent = rset.getString("continent");
+                String region = rset.getString("region");
+                int surfaceArea = rset.getInt("surfaceArea");
+                int indepYear = rset.getInt("indepYear");
+                int population = rset.getInt("population");
+                int lifeExpectancy = rset.getInt("lifeExpectancy");
+                int gnp = rset.getInt("gnp");
+                int gnpOld = rset.getInt("gnpOld");
+                String localName = rset.getString("localName");
+                String governmentForm = rset.getString("governmentForm");
+                String headOfState = rset.getString("headOfState");
+                int capital = rset.getInt("capital");
+                String code2 = rset.getString("code2");
                 Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
                         lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                sb.append(country.toString() + "\r\n");
                 report4.add(country);
             }
             // Displays the records
@@ -280,112 +303,9 @@ public class App
 
     }
 
-    //Top n populated countries in continent
-
-    public ArrayList<Country> TopPopulatedCountriesInContinent(int num, String cont) {
-
-        System.out.println("Top n populated countries in Continent");
-        StringBuilder sb  = new StringBuilder();
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String sql4 = "select * " +
-                    "from country " +
-                    "where Continent = " + cont +
-                    "Order By Population desc Limit " + num + ";";
-            // Execute SQL statement
-            ResultSet rset4 = stmt.executeQuery(sql4);
-            // Return new country if valid.
-            // Check one is returned
-            ArrayList<Country> report5 = new ArrayList<Country>();
-
-            while (rset4.next()) {
-                String code = rset4.getString("code");
-                String name = rset4.getString("name");
-                String continent = rset4.getString("continent");
-                String region = rset4.getString("region");
-                int surfaceArea = rset4.getInt("surfaceArea");
-                int indepYear = rset4.getInt("indepYear");
-                int population = rset4.getInt("population");
-                int lifeExpectancy = rset4.getInt("lifeExpectancy");
-                int gnp = rset4.getInt("gnp");
-                int gnpOld = rset4.getInt("gnpOld");
-                String localName = rset4.getString("localName");
-                String governmentForm = rset4.getString("governmentForm");
-                String headOfState = rset4.getString("headOfState");
-                int capital = rset4.getInt("capital");
-                String code2 = rset4.getString("code2");
-                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
-                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                sb.append(country.toString() + "\r\n");
-                report5.add(country);
-            }
-            // Displays the records
-            return report5;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
-        }
-
-    }
-
-    //Top n populated countries in Region
-
-    public ArrayList<Country> TopPopulatedCountriesInRegion(int num, String reg) {
-
-        System.out.println("Top n populated countries in Region");
-        StringBuilder sb  = new StringBuilder();
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String sql4 = "select * " +
-                    "from country " +
-                    "where Region = " + reg +
-                    "Order By Population desc Limit " + num + ";";
-            // Execute SQL statement
-            ResultSet rset4 = stmt.executeQuery(sql4);
-            // Return new country if valid.
-            // Check one is returned
-            ArrayList<Country> report6 = new ArrayList<Country>();
-
-            while (rset4.next()) {
-                String code = rset4.getString("code");
-                String name = rset4.getString("name");
-                String continent = rset4.getString("continent");
-                String region = rset4.getString("region");
-                int surfaceArea = rset4.getInt("surfaceArea");
-                int indepYear = rset4.getInt("indepYear");
-                int population = rset4.getInt("population");
-                int lifeExpectancy = rset4.getInt("lifeExpectancy");
-                int gnp = rset4.getInt("gnp");
-                int gnpOld = rset4.getInt("gnpOld");
-                String localName = rset4.getString("localName");
-                String governmentForm = rset4.getString("governmentForm");
-                String headOfState = rset4.getString("headOfState");
-                int capital = rset4.getInt("capital");
-                String code2 = rset4.getString("code2");
-                Country country = new Country(code, name, continent, region, surfaceArea, indepYear, population,
-                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
-                sb.append(country.toString() + "\r\n");
-                report6.add(country);
-            }
-            // Displays the records
-            return report6;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
-        }
-
-    }
-
-
     public ArrayList<City> citiesPopulation(String cName, int num) {
 
-        System.out.println("All the cities in a district organised by largest population to smallest.\n\n");
+        System.out.println("Cities Population\n");
         StringBuilder sb = new StringBuilder();
         try {
             // Create an SQL statement
@@ -472,7 +392,7 @@ public class App
  */
     public ArrayList<City> TopCities(int num, int limit) {
 
-        System.out.println("The top N populated cities in the world where N is provided by the user.\n\n");
+        System.out.println("TopCities\n");
         StringBuilder sb = new StringBuilder();
         try {
             // Create an SQL statement
@@ -759,7 +679,7 @@ public class App
     }
 
 
-    public static void printCities(ArrayList<City> cities)
+    public void printCities(ArrayList<City> cities)
     {
         if (cities == null)
         {
@@ -781,6 +701,7 @@ public class App
 
     public ArrayList<Country> populationRank(String populationName, int num){
 
+        System.out.println("PopulationRank");
         StringBuilder sb  = new StringBuilder();
         try {
             // Create an SQL statement
@@ -847,7 +768,7 @@ public class App
     }
 
 
-    public static void printCountries(ArrayList<Country> Countries)
+    public void printCountries(ArrayList<Country> Countries)
     {
         // Check countries is not null
         if (Countries == null)
@@ -885,22 +806,59 @@ public class App
 
         // ---------------------------------------------------------
 
+        // Population Rank
+        ArrayList<Country> worldPopulation = a.populationRank("", 1);
+        a.printCountries(worldPopulation);
 
-        ArrayList<Country> populationRank = a.populationRank("'Europe'", 2);
-        a.printCountries(populationRank);
-        
+        ArrayList<Country> continentPopulation = a.populationRank("'Asia'", 2);
+        a.printCountries(continentPopulation);
+
+        ArrayList<Country> regionPopulation = a.populationRank("'North America'", 3);
+        a.printCountries(regionPopulation);
+        // ------------------------------------------------------------------------------------------ //
+
+        // TopPopulation
+        ArrayList<Country> TopPopulationWorld = a.TopPopulation("", 5,1);
+        a.printCountries(TopPopulationWorld);
+
+        ArrayList<Country> TopPopulationContinent = a.TopPopulation("'Asia'", 5 , 2);
+        a.printCountries(TopPopulationContinent);
+
+        ArrayList<Country> TopPopulationRegion = a.TopPopulation("'North America'", 5 , 3);
+        a.printCountries(TopPopulationRegion);
+
+        // ------------------------------------------------------------------------------------------ //
+
+        // CitiesPopulation
+        ArrayList<City> CitiesInWorld = a.citiesPopulation("",1);
+        a.printCities(CitiesInWorld);
+
+        ArrayList<City> CitiesInContinent = a.citiesPopulation("'Asia'",2);
+        a.printCities(CitiesInContinent);
+
+        ArrayList<City> CitiesInRegion = a.citiesPopulation("'North America'",3);
+        a.printCities(CitiesInRegion);
+
+        ArrayList<City> CitiesInCountry = a.citiesPopulation("'United America'",4);
+        a.printCities(CitiesInCountry);
+
+        ArrayList<City> CitiesInDistrict = a.citiesPopulation("'California'",5);
+        a.printCities(CitiesInDistrict);
+
+
+        // ------------------------------------------------------------------------------------------ //
+
+
         ArrayList<Country> getCountries = a.getCountries();
 
         ArrayList<City> getCities = a.getCities();
-        printCities(getCities);
+       // a.printCities(getCities);
 
         ArrayList<CountryLanguage> getCountryLanguages = a.getCountryLanguages();
 
-        ArrayList<City> CitiesPopulation = a.citiesPopulation("'Europe'", 2);
-        printCities(CitiesPopulation);
 
         ArrayList<City> TopCities = a.TopCities(1, 5);
-        printCities(TopCities);
+        //a.printCities(TopCities);
 
         /*
         // Display the Records
