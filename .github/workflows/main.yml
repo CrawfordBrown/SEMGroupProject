@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - 646sam
+      - develop
 jobs:
   UnitTests:
     name: Unit Tests
