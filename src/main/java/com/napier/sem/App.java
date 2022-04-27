@@ -679,25 +679,7 @@ public class App
     }
 
 
-    public void printCities(ArrayList<City> cities)
-    {
-        if (cities == null)
-        {
-            System.out.println("No cities");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-30s %-30s %-35s %-20s", "Name", "Country", "District", "Population"));
-        // Loop over all countries in the list
-        for (City city : cities)
-        {
-            if (city == null)
-            {
-                continue;
-            }
-            System.out.println(String.format("%-30s %-30s %-35s %-20s", city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation()));
-        }
-    }
+
 
     public ArrayList<Country> populationRank(String populationName, int num){
 
@@ -767,8 +749,45 @@ public class App
         }
     }
 
+    public void printCities(ArrayList<City> cities, String filename)
+    {
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
 
-    public void printCountries(ArrayList<Country> Countries)
+        StringBuilder sb = new StringBuilder();
+        // Print header
+
+        sb.append("| Name | Country | District | Population | \r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+
+        //System.out.println(String.format("%-30s %-30s %-35s %-20s", "Name", "Country", "District", "Population"));
+        // Loop over all cities in the list
+        for (City city : cities)
+        {
+            if (city == null)
+            {
+                sb.append("| " + city.getName() + " | " +
+                        city.getCountryCode() + " | " + city.getDistrict() + " | " +
+                        city.getPopulation() + " |\r\n");
+            }
+            try{
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+            //System.out.println(String.format("%-30s %-30s %-35s %-20s", city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation()));
+        }
+    }
+
+
+    public void printCountries(ArrayList<Country> Countries, String filename)
     {
         // Check countries is not null
         if (Countries == null)
@@ -777,18 +796,31 @@ public class App
             return;
         }
 
+        StringBuilder sb = new StringBuilder();
         // Print header
-        String format = String.format("%-40s %-40s %-40s %-40s %-40s %-40s", "Code", "Name", "Continent", "Region", "Population", "Capital");
-        System.out.println(format);
+
+        sb.append("| Code | Name | Continent | Region | Population | Capital | \r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+
         // Loop over all countries in the list
         for (Country country : Countries)
         {
-            if (country == null)
-                continue;
-            String cnt_string =
-                    String.format("%-40s %-40s %-40s %-40s %-40s %-40s",
-                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
-            System.out.println(cnt_string);
+            if (country == null) {
+                sb.append("| " + country.getCode() + " | " +
+                        country.getName() + " | " +
+                        country.getContinent() + " | " +
+                        country.getRegion() + " | " +
+                        country.getPopulation() + " | " +
+                        country.getCapital() + "|\r\n");
+            }
+            try{
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -808,42 +840,42 @@ public class App
 
         // Population Rank
         ArrayList<Country> worldPopulation = a.populationRank("", 1);
-        a.printCountries(worldPopulation);
+        a.printCountries(worldPopulation, "WorldPopulation.md");
 
         ArrayList<Country> continentPopulation = a.populationRank("'Asia'", 2);
-        a.printCountries(continentPopulation);
+        a.printCountries(continentPopulation, "ContinentPopulation.md");
 
         ArrayList<Country> regionPopulation = a.populationRank("'North America'", 3);
-        a.printCountries(regionPopulation);
+        a.printCountries(regionPopulation, "RegionPopulation.md");
         // ------------------------------------------------------------------------------------------ //
 
         // TopPopulation
         ArrayList<Country> TopPopulationWorld = a.TopPopulation("", 5,1);
-        a.printCountries(TopPopulationWorld);
+        a.printCountries(TopPopulationWorld, "TopPopulationWorld.md");
 
         ArrayList<Country> TopPopulationContinent = a.TopPopulation("'Asia'", 5 , 2);
-        a.printCountries(TopPopulationContinent);
+        a.printCountries(TopPopulationContinent, "TopPopulationContinent.md");
 
         ArrayList<Country> TopPopulationRegion = a.TopPopulation("'North America'", 5 , 3);
-        a.printCountries(TopPopulationRegion);
+        a.printCountries(TopPopulationRegion, "TopPopulationRegion.md");
 
         // ------------------------------------------------------------------------------------------ //
 
         // CitiesPopulation
         ArrayList<City> CitiesInWorld = a.citiesPopulation("",1);
-        a.printCities(CitiesInWorld);
+        a.printCities(CitiesInWorld, "CitiesInWorld.md");
 
         ArrayList<City> CitiesInContinent = a.citiesPopulation("'Asia'",2);
-        a.printCities(CitiesInContinent);
+        a.printCities(CitiesInContinent, "CitiesInContinent.md");
 
         ArrayList<City> CitiesInRegion = a.citiesPopulation("'North America'",3);
-        a.printCities(CitiesInRegion);
+        a.printCities(CitiesInRegion, "CitiesInRegion.md");
 
         ArrayList<City> CitiesInCountry = a.citiesPopulation("'United America'",4);
-        a.printCities(CitiesInCountry);
+        a.printCities(CitiesInCountry, "CitiesInCountry.md");
 
         ArrayList<City> CitiesInDistrict = a.citiesPopulation("'California'",5);
-        a.printCities(CitiesInDistrict);
+        a.printCities(CitiesInDistrict, "CitiesInDistrict.md");
 
 
         // ------------------------------------------------------------------------------------------ //
