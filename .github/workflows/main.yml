@@ -7,6 +7,7 @@ on:
       - integration_tests
       - sql_queries
       - DylanFdes
+      - reports
 
 jobs:
   UnitTests:
