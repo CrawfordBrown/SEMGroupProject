@@ -15,6 +15,7 @@ public class AppTest
         app = new App();
     }
 
+
     @Test
     void printCountriesTestNull()
     {
@@ -95,6 +96,6 @@ public class AppTest
         cities.add(myCity);
         app.printCities(cities);
     }
-   
+
 
 }
