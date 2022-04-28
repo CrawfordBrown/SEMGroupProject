@@ -749,7 +749,7 @@ public class App
         }
     }
 
-    public void printCities(ArrayList<City> cities, String filename)
+    public void WritesCities(ArrayList<City> cities, String filename)
     {
         // Check cities is not null
         if (cities == null)
@@ -776,6 +776,7 @@ public class App
         }
         try{
             new File("./reports/").mkdir();
+
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
             writer.write(sb.toString());
             writer.close();
@@ -786,7 +787,66 @@ public class App
 
     }
 
-    public void printCountries(ArrayList<Country> Countries, String filename)
+    public void printCities(ArrayList<City> cities)
+    {
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+
+        sb.append("| Name | Country | District | Population | \r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+
+        //System.out.println(String.format("%-30s %-30s %-35s %-20s", "Name", "Country", "District", "Population"));
+        // Loop over all cities in the list
+        for (City city : cities) {
+            if (city == null) {
+                continue;
+            }
+            sb.append("| " + city.getName() + " | " +
+                    city.getCountryCode() + " | " + city.getDistrict() + " | " +
+                    city.getPopulation() + " |\r\n");
+        }
+        //System.out.println(String.format("%-30s %-30s %-35s %-20s", city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation()));
+
+    }
+
+    public void printCountries(ArrayList<Country> Countries)
+    {
+        // Check countries is not null
+        if (Countries == null)
+        {
+            System.out.println("No countries");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+
+        sb.append("| Code | Name | Continent | Region | Population | Capital | \r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+
+        // Loop over all countries in the list
+        for (Country country : Countries) {
+            if (country == null) {
+                continue;
+            }
+            sb.append("| " + country.getCode() + " | " +
+                    country.getName() + " | " +
+                    country.getContinent() + " | " +
+                    country.getRegion() + " | " +
+                    country.getPopulation() + " | " +
+                    country.getCapital() + "|\r\n");
+        }
+
+    }
+
+    public void WritesCountries(ArrayList<Country> Countries, String filename)
     {
         // Check countries is not null
         if (Countries == null)
@@ -840,42 +900,42 @@ public class App
 
         // Population Rank
         ArrayList<Country> worldPopulation = a.populationRank("", 1);
-        a.printCountries(worldPopulation, "WorldPopulation.md");
+        a.WritesCountries(worldPopulation, "WorldPopulation.md");
 
         ArrayList<Country> continentPopulation = a.populationRank("'Asia'", 2);
-        a.printCountries(continentPopulation, "ContinentPopulation.md");
+        a.WritesCountries(continentPopulation, "ContinentPopulation.md");
 
         ArrayList<Country> regionPopulation = a.populationRank("'North America'", 3);
-        a.printCountries(regionPopulation, "RegionPopulation.md");
+        a.WritesCountries(regionPopulation, "RegionPopulation.md");
         // ------------------------------------------------------------------------------------------ //
 
         // TopPopulation
         ArrayList<Country> TopPopulationWorld = a.TopPopulation("", 5,1);
-        a.printCountries(TopPopulationWorld, "TopPopulationWorld.md");
+        a.WritesCountries(TopPopulationWorld, "TopPopulationWorld.md");
 
         ArrayList<Country> TopPopulationContinent = a.TopPopulation("'Asia'", 5 , 2);
-        a.printCountries(TopPopulationContinent, "TopPopulationContinent.md");
+        a.WritesCountries(TopPopulationContinent, "TopPopulationContinent.md");
 
         ArrayList<Country> TopPopulationRegion = a.TopPopulation("'North America'", 5 , 3);
-        a.printCountries(TopPopulationRegion, "TopPopulationRegion.md");
+        a.WritesCountries(TopPopulationRegion, "TopPopulationRegion.md");
 
         // ------------------------------------------------------------------------------------------ //
 
         // CitiesPopulation
         ArrayList<City> CitiesInWorld = a.citiesPopulation("",1);
-        a.printCities(CitiesInWorld, "CitiesInWorld.md");
+        a.WritesCities(CitiesInWorld, "CitiesInWorld.md");
 
         ArrayList<City> CitiesInContinent = a.citiesPopulation("'Asia'",2);
-        a.printCities(CitiesInContinent, "CitiesInContinent.md");
+        a.WritesCities(CitiesInContinent, "CitiesInContinent.md");
 
         ArrayList<City> CitiesInRegion = a.citiesPopulation("'North America'",3);
-        a.printCities(CitiesInRegion, "CitiesInRegion.md");
+        a.WritesCities(CitiesInRegion, "CitiesInRegion.md");
 
         ArrayList<City> CitiesInCountry = a.citiesPopulation("'United States'",4);
-        a.printCities(CitiesInCountry, "CitiesInCountry.md");
+        a.WritesCities(CitiesInCountry, "CitiesInCountry.md");
 
         ArrayList<City> CitiesInDistrict = a.citiesPopulation("'California'",5);
-        a.printCities(CitiesInDistrict, "CitiesInDistrict.md");
+        a.WritesCities(CitiesInDistrict, "CitiesInDistrict.md");
 
 
         // ------------------------------------------------------------------------------------------ //
