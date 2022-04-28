@@ -767,16 +767,14 @@ public class App
         //System.out.println(String.format("%-30s %-30s %-35s %-20s", "Name", "Country", "District", "Population"));
         // Loop over all cities in the list
         for (City city : cities) {
-            if (city == null) {
-                continue;
-            }
+            if (city == null) continue;
+
             sb.append("| " + city.getName() + " | " +
                     city.getCountryCode() + " | " + city.getDistrict() + " | " +
                     city.getPopulation() + " |\r\n");
         }
         try{
             new File("./reports/").mkdir();
-
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
             writer.write(sb.toString());
             writer.close();
@@ -863,9 +861,7 @@ public class App
 
         // Loop over all countries in the list
         for (Country country : Countries) {
-            if (country == null) {
-                continue;
-            }
+            if (country == null) continue;
             sb.append("| " + country.getCode() + " | " +
                     country.getName() + " | " +
                     country.getContinent() + " | " +
@@ -875,7 +871,7 @@ public class App
         }
         try{
             new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
             writer.write(sb.toString());
             writer.close();
         }catch (IOException e){
