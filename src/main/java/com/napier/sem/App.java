@@ -833,9 +833,9 @@ public class App
                     "from country " +
                     "where region = " + populationName +
                     "order by Population desc;";;
-                    
-            ResultSet rset = null;        
-                    
+
+            ResultSet rset = null;
+
             if(num == 1)
             {
                 rset = stmt.executeQuery(worldPopulation);
@@ -909,43 +909,88 @@ public class App
         }
     }
 
-    public void WritesCountries(ArrayList<Country> Countries, String filename)
+//    public void WritesCountries(ArrayList<Country> Countries, String filename)
+//    {
+//        // Check countries is not null
+//        if (Countries == null)
+//        {
+//            System.out.println("No countries");
+//            return;
+//        }
+//        System.out.println("hello");
+//
+//        StringBuilder sb = new StringBuilder();
+//        // Print header
+//
+//        sb.append("| Code | Name | Continent | Region | Population | Capital | \r\n");
+//        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+//
+//        // Loop over all countries in the list
+//        for (Country country : Countries) {
+//            if (country == null) {
+//                continue;
+//            }
+//            sb.append("| " + country.getCode() + " | " +
+//                    country.getName() + " | " +
+//                    country.getContinent() + " | " +
+//                    country.getRegion() + " | " +
+//                    country.getPopulation() + " | " +
+//                    country.getCapital() + "|\r\n");
+//        } try {
+//        new File("./reports/").mkdir();
+//        System.out.println("hello");
+//
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+//        writer.write(sb.toString());
+//        writer.close();
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//    }
+//
+//    }
+
+    public static void WritesCountries(ArrayList<Country> countries, String filename)
     {
-        // Check countries is not null
-        if (Countries == null)
+        if (countries == null)
         {
             System.out.println("No countries");
             return;
         }
-
         StringBuilder sb = new StringBuilder();
         // Print header
-
-        sb.append("| Code | Name | Continent | Region | Population | Capital | \r\n");
+        sb.append("| Code | Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-
-        // Loop over all countries in the list
-        for (Country country : Countries) {
-            if (country == null) {
+        // Loop over all employees in the list
+        for (Country country : countries)
+        {
+            if (country == null)
+            {
                 continue;
             }
-            sb.append("| " + country.getCode() + " | " +
-                    country.getName() + " | " +
-                    country.getContinent() + " | " +
-                    country.getRegion() + " | " +
-                    country.getPopulation() + " | " +
-                    country.getCapital() + "|\r\n");
-        } try {
-        new File("./reports/").mkdir();
-        BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-        writer.write(sb.toString());
-        writer.close();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+            sb.append("| " + country.getCode() + " | " + country.getName() + " | " + country.getContinent() + " | " + country.getRegion() + " | " + country.getPopulation() + " | " + country.getCapital() + " | \r\n");
+        }
+        try {
+            // create an abstract pathname (File object)
+            File f = new File("/reports/");
+//            new File("./reports/").mkdir();
+            if (f.mkdir()) {
 
+                // display that the directory is created
+                // as the function returned true
+                System.out.println("Directory is created");
+            }
+            else {
+                // display that the directory cannot be created
+                // as the function returned false
+                System.out.println("Directory cannot be created");
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new                                 File(f + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -962,7 +1007,7 @@ public class App
 
 
         ArrayList<Country> populationRank = a.populationRank("'Europe'", 2);
-        a.WritesCountries(populationRank, "populationRank.md");
+        WritesCountries(populationRank, "populationRank.md");
 //
 //        ArrayList<Country> getCountries = a.getCountries();
 //
