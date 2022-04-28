@@ -971,7 +971,7 @@ public class App
         }
         try {
             // create an abstract pathname (File object)
-            File f = new File("/reports/");
+            File f = new File("./reports/");
 //            new File("./reports/").mkdir();
             if (f.mkdir()) {
 
