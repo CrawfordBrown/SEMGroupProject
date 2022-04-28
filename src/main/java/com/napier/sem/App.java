@@ -871,6 +871,226 @@ public class App
         }
     }
 
+
+    public ArrayList<Country> reportCapitalPopulation1() {
+        System.out.println("All the capital cities in the world organised by largest population to smallest \n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlCP1 = "SELECT Capital FROM country ORDER BY Population DESC;";
+            // execute SQL statement
+            ResultSet resultCP1 = stmt.executeQuery(sqlCP1);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportCP1 = new ArrayList<Country>();
+
+            while (resultCP1.next()) {
+                String code = resultCP1.getString("code"); //MAKE SURE THIS WORKS, RANDOM
+                String name = resultCP1.getString("name");
+                String continent = resultCP1.getString("continent");
+                String region = resultCP1.getString("region");
+                Integer surfaceArea = resultCP1.getInt("surfaceArea");
+                Integer indepYear = resultCP1.getInt("indepYear");
+                Integer population = resultCP1.getInt("population");
+                Integer lifeExpectancy = resultCP1.getInt("lifeExpectancy");
+                Integer gnp = resultCP1.getInt("gnp");
+                Integer gnpOld = resultCP1.getInt("gnpOld");
+                String localName = resultCP1.getString("localName");
+                String governmentForm = resultCP1.getString("governmentForm");
+                String headOfState = resultCP1.getString("headOfState");
+                Integer capital = resultCP1.getInt("capital");
+                String code2 = resultCP1.getString("code2");
+                Country countries = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                reportCP1.add(countries);
+            }
+            //Display the record
+            return reportCP1;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get capital city details organised by largest to smallest population \n\n");
+            return null;
+        }
+    }
+
+    public ArrayList<Country> reportCapitalPopulation2(String userContinent) {
+        System.out.println("All the capital cities in a continent organised by largest population to smallest \n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlCP2 = "SELECT Capital FROM country WHERE Continent = " + userContinent + " ORDER BY Population DESC;";
+            // execute SQL statement
+            ResultSet resultCP2 = stmt.executeQuery(sqlCP2);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportCP2 = new ArrayList<Country>();
+
+            while (resultCP2.next()) {
+                String code = resultCP2.getString("code"); //MAKE SURE THIS WORKS, RANDOM
+                String name = resultCP2.getString("name");
+                String continent = resultCP2.getString("continent");
+                String region = resultCP2.getString("region");
+                Integer surfaceArea = resultCP2.getInt("surfaceArea");
+                Integer indepYear = resultCP2.getInt("indepYear");
+                Integer population = resultCP2.getInt("population");
+                Integer lifeExpectancy = resultCP2.getInt("lifeExpectancy");
+                Integer gnp = resultCP2.getInt("gnp");
+                Integer gnpOld = resultCP2.getInt("gnpOld");
+                String localName = resultCP2.getString("localName");
+                String governmentForm = resultCP2.getString("governmentForm");
+                String headOfState = resultCP2.getString("headOfState");
+                Integer capital = resultCP2.getInt("capital");
+                String code2 = resultCP2.getString("code2");
+                Country countries = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                reportCP2.add(countries);
+            }
+            //Display the record
+            return reportCP2;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the capital cities in a continent organised by largest population to smallest \n\n");
+            return null;
+        }
+    }
+
+    public ArrayList<Country> reportCapitalPopulation3(String userRegion) {
+        System.out.println("All the capital cities in a region organised by largest population to smallest \n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlCP3 = "SELECT Capital FROM country WHERE Region = " + userRegion + " ORDER BY Population DESC;";
+            // execute SQL statement
+            ResultSet resultCP3 = stmt.executeQuery(sqlCP3);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportCP3 = new ArrayList<Country>();
+
+            while (resultCP3.next()) {
+                String code = resultCP3.getString("code"); //MAKE SURE THIS WORKS, RANDOM
+                String name = resultCP3.getString("name");
+                String continent = resultCP3.getString("continent");
+                String region = resultCP3.getString("region");
+                Integer surfaceArea = resultCP3.getInt("surfaceArea");
+                Integer indepYear = resultCP3.getInt("indepYear");
+                Integer population = resultCP3.getInt("population");
+                Integer lifeExpectancy = resultCP3.getInt("lifeExpectancy");
+                Integer gnp = resultCP3.getInt("gnp");
+                Integer gnpOld = resultCP3.getInt("gnpOld");
+                String localName = resultCP3.getString("localName");
+                String governmentForm = resultCP3.getString("governmentForm");
+                String headOfState = resultCP3.getString("headOfState");
+                Integer capital = resultCP3.getInt("capital");
+                String code2 = resultCP3.getString("code2");
+                Country countries = new Country(code, name, continent, region, surfaceArea, indepYear, population,
+                        lifeExpectancy, gnp, gnpOld, localName, governmentForm, headOfState, capital, code2);
+                reportCP3.add(countries);
+            }
+            //Display the record
+            return reportCP3;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the capital cities in a region organised by largest population to smallest \n\n");
+            return null;
+        }
+    }
+
+    public ArrayList<Country> topCapital1(int topNPopulatedCapitalCities) {
+        System.out.println("The top N populated capital cities in the world where N is provided by the user \n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlTC1 = "SELECT Capital FROM country ORDER BY Population DESC LIMIT " + topNPopulatedCapitalCities + ";";
+            // execute SQL statement
+            ResultSet resultTC1 = stmt.executeQuery(sqlTC1);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportTC1 = new ArrayList<Country>();
+
+            while (resultTC1.next()) {
+                Country countries = new Country(resultTC1.getString("code"), resultTC1.getString("name"), resultTC1.getString("continent"),
+                        resultTC1.getString("region"), resultTC1.getInt("surfaceArea"), resultTC1.getInt("indepYear"), resultTC1.getInt("population"),
+                        resultTC1.getInt("lifeExpectancy"), resultTC1.getInt("gnp"), resultTC1.getInt("gnpOld"),
+                        resultTC1.getString("localName"), resultTC1.getString("governmentForm"), resultTC1.getString("headOfState"), resultTC1.getInt("capital"), resultTC1.getString("code2"));
+                reportTC1.add(countries);
+            }
+            //Display the record
+            return reportTC1;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to the top N populated capital cities in the world where N is provided by the user \n\n");
+            return null;
+        }
+    }
+
+    public ArrayList<Country> topCapital2(int topNPopulatedCapitalCities, String userContinent) {
+        System.out.println("The top N populated capital cities in a continent where N is provided by the user \n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlTC2 = "SELECT Capital FROM country WHERE Continent = " + userContinent + " ORDER BY Population DESC LIMIT " + topNPopulatedCapitalCities + ";";
+            // execute SQL statement
+            ResultSet resultTC2 = stmt.executeQuery(sqlTC2);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportTC2 = new ArrayList<Country>();
+
+            while (resultTC2.next()) {
+                Country countries = new Country(resultTC2.getString("code"), resultTC2.getString("name"), resultTC2.getString("continent"),
+                        resultTC2.getString("region"), resultTC2.getInt("surfaceArea"), resultTC2.getInt("indepYear"), resultTC2.getInt("population"),
+                        resultTC2.getInt("lifeExpectancy"), resultTC2.getInt("gnp"), resultTC2.getInt("gnpOld"),
+                        resultTC2.getString("localName"), resultTC2.getString("governmentForm"), resultTC2.getString("headOfState"), resultTC2.getInt("capital"), resultTC2.getString("code2"));
+                reportTC2.add(countries);
+            }
+            //Display the record
+            return reportTC2;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to the top N populated capital cities in the world where N is provided by the user \n\n");
+            return null;
+        }
+    }
+
+    public ArrayList<Country> topCapital3(int topNPopulatedCapitalCities, String userRegion) {
+        System.out.println("The top N populated capital cities in a region where N is provided by the user.  \n\n");
+        StringBuilder sb = new StringBuilder();
+        try {
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            //create string for SQL statement
+            String sqlTC3 = "SELECT Capital FROM country WHERE Region = " + userRegion + " ORDER BY Population DESC LIMIT " + topNPopulatedCapitalCities + ";";
+            // execute SQL statement
+            ResultSet resultTC3 = stmt.executeQuery(sqlTC3);
+            // return capital cities if valid
+            // check on is returned
+            ArrayList<Country> reportTC3 = new ArrayList<Country>();
+
+            while (resultTC3.next()) {
+                Country countries = new Country(resultTC3.getString("code"), resultTC3.getString("name"), resultTC3.getString("continent"),
+                        resultTC3.getString("region"), resultTC3.getInt("surfaceArea"), resultTC3.getInt("indepYear"), resultTC3.getInt("population"),
+                        resultTC3.getInt("lifeExpectancy"), resultTC3.getInt("gnp"), resultTC3.getInt("gnpOld"),
+                        resultTC3.getString("localName"), resultTC3.getString("governmentForm"), resultTC3.getString("headOfState"), resultTC3.getInt("capital"), resultTC3.getString("code2"));
+                reportTC3.add(countries);
+            }
+            //Display the record
+            return reportTC3;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to The top N populated capital cities in a region where N is provided by the user. \n\n");
+            return null;
+        }
+    }
+
     public static void main(String[] args) {
         // Create new Application
         App a = new App();
@@ -886,25 +1106,25 @@ public class App
         // ---------------------------------------------------------
 
 
-        ArrayList<Country> populationRank = a.populationRank("'Europe'", 2);
-        a.printCountries(populationRank);
-        
-        ArrayList<Country> getCountries = a.getCountries();
-
-        ArrayList<City> getCities = a.getCities();
-        printCities(getCities);
-
-        ArrayList<CountryLanguage> getCountryLanguages = a.getCountryLanguages();
-
-        ArrayList<City> CitiesPopulation = a.citiesPopulation("'Europe'", 2);
-        printCities(CitiesPopulation);
-
-        ArrayList<City> TopCities = a.TopCities(1, 5);
-        printCities(TopCities);
-
-        /*
-        // Display the Records
-
+//        ArrayList<Country> populationRank = a.populationRank("'Europe'", 2);
+//        a.printCountries(populationRank);
+//
+//        ArrayList<Country> getCountries = a.getCountries();
+//
+//        ArrayList<City> getCities = a.getCities();
+//        printCities(getCities);
+//
+//        ArrayList<CountryLanguage> getCountryLanguages = a.getCountryLanguages();
+//
+//        ArrayList<City> CitiesPopulation = a.citiesPopulation("'Europe'", 2);
+//        printCities(CitiesPopulation);
+//
+//        ArrayList<City> TopCities = a.TopCities(1, 5);
+//        printCities(TopCities);
+//
+//
+//        // Display the Records
+//
         a.countriesInWorldLargestToSmallest();
         a.countriesInContinentLargestToSmallest("'Asia'");
         a.countriesInRegionLargestToSmallest("'Caribbean'");
@@ -912,23 +1132,40 @@ public class App
         a.TopPopulatedCountriesInContinent(5, "'Asia'");
         a.TopPopulatedCountriesInRegion(3, "'Caribbean'");
 
-        // Display all the cities in the world organised by largest population to smallest.
-        a.CitiesInTheWorldLargestPopulationToSmallest();
+//        // Display all the cities in the world organised by largest population to smallest.
+//        a.CitiesInTheWorldLargestPopulationToSmallest();
+//
+//        // Display all the cities in a continent organised by largest population to smallest.
+//        a.CitiesInContinentLargestToSmallest("'Europe'");
+//
+//        // Display all the cities in a region organised by largest population to smallest.
+//        a.CitiesInRegionLargestToSmallest("'Middle East'");
+//
+//        // Display All the cities in a country organised by largest population to smallest.
+//        a.CitiesInCountryLargestToSmallest("'Netherlands'");
+//
+//        // Display All the cities in a district organised by largest population to smallest.
+//        a.CitiesInDistrictLargestToSmallest("'Buenos Aires'");
+//
+//// Display all the capital cities in the world organised by largest population to smallest.
+//        ArrayList<Country> reportCP1 = a.reportCapitalPopulation1(); // FILL IN ANSWER *NOTE FOR SAM*
+//
+        // Display all the capital cities in a continent organised by largest population to smallest.
+        ArrayList<Country> reportCP2 = a.reportCapitalPopulation2( "'Africa'"); // FILL IN ANSWER *NOTE FOR SAM*
 
-        // Display all the cities in a continent organised by largest population to smallest.
-        a.CitiesInContinentLargestToSmallest("'Europe'");
+        // Display all the capital cities in a region organised by largest population to smallest.
+        ArrayList<Country> reportCP3 = a.reportCapitalPopulation3( "'Caribbean'" ); // FILL IN ANSWER *NOTE FOR SAM*
 
-        // Display all the cities in a region organised by largest population to smallest.
-        a.CitiesInRegionLargestToSmallest("'Middle East'");
+        //Display top N populated capital cities in the world where N is provided by the user.
+        ArrayList<Country> reportTC1 = a.topCapital1(5 ); // FILL IN ANSWER *NOTE FOR SAM*
 
-        // Display All the cities in a country organised by largest population to smallest.
-        a.CitiesInCountryLargestToSmallest("'Netherlands'");
+        //Display top N populated capital cities in the world where N is provided by the user.
+        ArrayList<Country> reportTC2 = a.topCapital2( 3, "'Asia'"); // FILL IN ANSWER *NOTE FOR SAM*
 
-        // Display All the cities in a district organised by largest population to smallest.
-        a.CitiesInDistrictLargestToSmallest("'Buenos Aires'");
+        //Display top N populated capital cities in the world where N is provided by the user.
+        ArrayList<Country> reportTC3 = a.topCapital3( 4, "'Caribbean"); // FILL IN ANSWER *NOTE FOR SAM*
 
 
-         */
         // Disconnect from database
         a.disconnect();
     }
