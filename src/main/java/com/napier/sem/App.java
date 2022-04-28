@@ -680,6 +680,64 @@ public class App
 
 
 
+    public ArrayList<City> capitalPopulation(String capitalName, int num){
+
+        System.out.println("capitalPopulation");
+        StringBuilder sb  = new StringBuilder();
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String sqlCP1 = "SELECT ID, city.Name, country.name, District, city.Population " +
+                    "FROM city JOIN country ON (country.code = city.CountryCode) WHERE (Capital = ID)" +
+                    " ORDER BY city.Population DESC";
+
+            String sqlCP2 = "SELECT ID, city.Name, country.name, District, city.Population " +
+                    "FROM city JOIN country ON (country.code = city.CountryCode) WHERE (Capital = ID) && continent = '" + capitalName +
+                    "' ORDER BY city.Population DESC";
+
+            String regionPopulation = "SELECT ID, city.Name, country.name, District, city.Population " +
+                    "FROM city JOIN country ON (country.code = city.CountryCode) WHERE (Capital = ID) && Region = '" + capitalName +
+                    "' ORDER BY city.Population DESC";
+
+            ResultSet rset = null;
+
+            if(num == 1)
+            {
+                rset = stmt.executeQuery(sqlCP1);
+            }
+            else if (num == 2)
+            {
+                rset = stmt.executeQuery(sqlCP2);
+            }
+            else if (num == 3)
+            {
+                rset = stmt.executeQuery(regionPopulation);
+            }
+            // Execute SQL statement
+
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<City> capitalPopulation = new ArrayList<>();
+            while (rset.next()) {
+                int id = rset.getInt("id");
+                String name = rset.getString("name");
+                String countryCode = rset.getString("countryCode");
+                String district = rset.getString("district");
+                int population = rset.getInt("population");
+                City city = new City(id, name, countryCode, district, population);
+                capitalPopulation.add(city);
+            }
+            // Displays the records
+            return capitalPopulation;
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
 
     public ArrayList<Country> populationRank(String populationName, int num){
 
@@ -936,6 +994,23 @@ public class App
 
         // ------------------------------------------------------------------------------------------ //
 
+        // capitalPopulation
+        ArrayList<City> CapitalCitiesWorld = a.capitalPopulation("", 1);
+        a.WritesCities(CapitalCitiesWorld, "CapitalCitiesWorld.md");
+
+        ArrayList<City> CapitalCitiesContinent = a.capitalPopulation("'Asia'", 2);
+        a.WritesCities(CapitalCitiesContinent, "CapitalCitiesContinent.md");
+
+        ArrayList<City> CapitalCitiesRegion = a.capitalPopulation("'North America'", 3);
+        a.WritesCities(CapitalCitiesRegion, "CapitalCitiesRegion.md");
+
+        // ------------------------------------------------------------------------------------------ //
+
+        // TopCapital
+
+        // ------------------------------------------------------------------------------------------ //
+
+
 
         ArrayList<Country> getCountries = a.getCountries();
 
@@ -948,33 +1023,7 @@ public class App
         ArrayList<City> TopCities = a.TopCities(1, 5);
         //a.printCities(TopCities);
 
-        /*
-        // Display the Records
 
-        a.countriesInWorldLargestToSmallest();
-        a.countriesInContinentLargestToSmallest("'Asia'");
-        a.countriesInRegionLargestToSmallest("'Caribbean'");
-        a.TopPopulatedCountriesInWorld(5);
-        a.TopPopulatedCountriesInContinent(5, "'Asia'");
-        a.TopPopulatedCountriesInRegion(3, "'Caribbean'");
-
-        // Display all the cities in the world organised by largest population to smallest.
-        a.CitiesInTheWorldLargestPopulationToSmallest();
-
-        // Display all the cities in a continent organised by largest population to smallest.
-        a.CitiesInContinentLargestToSmallest("'Europe'");
-
-        // Display all the cities in a region organised by largest population to smallest.
-        a.CitiesInRegionLargestToSmallest("'Middle East'");
-
-        // Display All the cities in a country organised by largest population to smallest.
-        a.CitiesInCountryLargestToSmallest("'Netherlands'");
-
-        // Display All the cities in a district organised by largest population to smallest.
-        a.CitiesInDistrictLargestToSmallest("'Buenos Aires'");
-
-
-         */
         // Disconnect from database
         a.disconnect();
     }
